@@ -4,32 +4,29 @@ const productManager = new ProductManager();
 
 // Definir una función para ejecutar el contexto
 const context = async () => {
+    const test = await productManager.getProducts();
+    console.log(test);
     let productTest = {
         title: 'producto prueba',
-        description: 'Este es un producto prueba',
+        description: 'Este es un producto prueba 7',
         price: 200,
         thumbnail: 'Sin imagen',
-        code: 'abc123',
+        code: 'abc1234',
         stock: 25
     }
 
-    await productManager.addProduct(productTest);
+    await productManager.addProducts(productTest);
 
-    const newProduct = await productManager.getProducts(); // Asigna el resultado a newProduct
-
-    console.log(newProduct);
-    console.log("***********************************************");
+    const newUsers = await productManager.getProducts();
+    console.log(newUsers);
 
     const busquedaPorId = await productManager.getProductById(1);
-    console.log(busquedaPorId);
 
-    console.log("***********************************************");
+    console.log(busquedaPorId)
+    await productManager.updateProduct(1, 'titles', 'Producto de prueba editado')
+    console.log(await productManager.getProductById(1));
+    await productManager.deleteProduct(1);
 
-    const newProducts = await productManager.deleteProduct(1);
-
-    console.log(newProducts);
-    console.log("***********************************************");
 }
 
-// Llama a la función context para ejecutarla
 context();

@@ -7,54 +7,70 @@ export default class ProductManager {
         this.path = './products/files/productos.json';
     }
 
+
     getProducts = async () => {
         if (fs.existsSync(this.path)) {
             const data = await fs.promises.readFile(this.path, 'utf-8');
-            if (data.trim() === '') {
-                return []; // Devuelve un array vacío si el archivo está vacío
-            }
-            const users = JSON.parse(data);
-            return users;
+            const products = JSON.parse(data);
+            return products;
         }
-        return []; // Devuelve un array vacío si el archivo no existe
+        return [];
     }
-
-    addProduct = async (user) => {
-        const users = await this.getProducts();
-        if (users.find(product => product.code === user.code)) {
+    addProducts = async (product) => {
+        const products = await this.getProducts();
+        if (products.find(p => p.code === product.code)) {
             throw new Error("El producto ya existe"); // Lanza un error si el producto ya existe
         }
-
-        if (users.length === 0) {
-            user.id = 1;
+        if (products.length === 0) {
+            product.id = 1;
         } else {
-            user.id = users[users.length - 1].id + 1;
+            product.id = products[products.length - 1].id + 1;
         }
-
-        users.push(user);
-
-        await fs.promises.writeFile(this.path, JSON.stringify(users, null, '\t'));
-
-        return user; // Retorna el producto recién agregado
+        products.push(product);
+        await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
+        return product; // Retorna el producto recién agregado
     }
 
     getProductById = async (searchById) => {
         const data = await fs.promises.readFile(this.path, 'utf-8');
-        const products = JSON.parse(data);
-        const Existe = products.find(p => p.Id === searchById);
-        if (Existe) {
-            return products;
+        const cart = JSON.parse(data)
+        const product = cart.find(p => p.id === searchById)
+        if (product) {
+            return product
         } else {
-            console.log("No existe un producto con el ID");
+            throw new Error("El producto ya existe"); // Lanza un error si el producto ya existe
         }
+
     }
 
     deleteProduct = async (_id) => {
         const data = await fs.promises.readFile(this.path, 'utf-8');
-        const productos = JSON.parse(data);
-        let res = productos.filter(pr => pr.Id != _id);
-        const cartJson = JSON.stringify(res)
+        const products = JSON.parse(data);
+        const Existe = products.find(products => products.id === _id);
+
+        if (!Existe) {
+            throw new Error("El producto ya existe"); // Lanza un error si el producto ya existe
+        }
+        const deleteProduct = products.filter(products => products.id !== _id);
+        console.log(deleteProduct)
+    }
+
+    updateProduct = async (_id, atribute, value) => {
+
+        const datas = await fs.promises.readFile(this.path, 'utf-8');
+        const productos = JSON.parse(datas);
+
+        const item_index = productos.findIndex(p => p.id === _id)
+
+        if (item_index < 0) {
+            throw new Error("El producto ya existe"); // Lanza un error si el producto ya existe
+        }
+
+        const selectedItem = productos[item_index];
+        selectedItem[atribute] = value;
+        productos[item_index] = selectedItem;
+
+        const cartJson = JSON.stringify(productos)
         await fs.promises.writeFile(this.path, cartJson);
-        return res;
     }
 }
