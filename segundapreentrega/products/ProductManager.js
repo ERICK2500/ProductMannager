@@ -72,5 +72,6 @@ export default class ProductManager {
 
         const cartJson = JSON.stringify(productos)
         await fs.promises.writeFile(this.path, cartJson);
+
     }
 }
