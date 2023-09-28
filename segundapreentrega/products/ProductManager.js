@@ -14,24 +14,19 @@ export default class ProductManager {
         return [];
     }
 
-    addProduct = async (product) => {
+    addProducts = async (product) => {
         const products = await this.getProducts();
         if (products.find(p => p.code === product.code)) {
-            throw new Error("El producto ya existe");
+            throw new Error("El producto ya existe"); // Lanza un error si el producto ya existe
         }
-
-        let maxId = 0;
-        for (const product of products) {
-            if (product.id > maxId) {
-                maxId = product.id;
-            }
+        if (products.length === 0) {
+            product.id = 1;
+        } else {
+            product.id = products[products.length - 1].id + 1;
         }
-
-        product.id = maxId + 1;
         products.push(product);
-
         await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
-        return product;
+        return product; // Retorna el producto recién agregado
     }
 
     getProductById = async (searchById) => {
