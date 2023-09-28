@@ -1,4 +1,4 @@
-import ProductManager from './products/ProductManager.js';
+import ProductManager from './products/managers/ProductManager.js';
 
 // Ruta del archivo JSON
 const filePath = './products/files/productos.json';
@@ -26,7 +26,7 @@ const context = async () => {
      const busquedaPorId = await productManager.getProductById(1);
 
      console.log(busquedaPorId)
-     await productManager.updateProduct('abc123', 'description', 'Producto de prueba editado 1')
+     await productManager.updateProduct('abc123', 'description', 'Producto de prueba editado 2')
      console.log(await productManager.getProductById(1));
      await productManager.deleteProduct(1);
 
