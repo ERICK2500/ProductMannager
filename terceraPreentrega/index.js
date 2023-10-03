@@ -1,0 +1,29 @@
+import ProductManager from './products/managers/ProductManager.js'
+
+// Ruta del archivo JSON
+const filePath = './products/files/productos.json';
+
+const productManager = new ProductManager(filePath);
+
+// Definir una función para ejecutar el contexto
+const context = async () => {
+
+    let productTest = {
+        title: 'producto prueba 11',
+        description: 'Este es un producto prueba 11',
+        price: 200,
+        thumbnail: 'Sin imagen',
+        code: 'abc1234567891011',
+        stock: 25
+    }
+
+    // await productManager.addProducts(productTest);
+    // const newProducts = await productManager.getProducts();
+    // console.log(newProducts);
+    const busquedaPorId = await productManager.getProductById(2);
+    console.log(busquedaPorId)
+    await productManager.updateProduct('abc123', 'description', 'Producto de prueba editado 2')
+    await productManager.deleteProduct(1);
+}
+
+context();
