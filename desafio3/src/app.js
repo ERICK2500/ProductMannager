@@ -9,11 +9,11 @@ const app = express();
 const PORT = 8080;
 
 app.listen(PORT, () => {
-    console.log(`Listening on PORT 8080`);
+    console.log(`Listening on http://localhost:${PORT}`);
 });
 
 app.get('/', async (req, res) => {
-    res.send('<h1>Bienvenido</h1>');
+    res.send(`<h1>Bienvenido</h1>`)
 })
 
 app.get('/products', async (req, res) => {
