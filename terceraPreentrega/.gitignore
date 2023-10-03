@@ -1,3 +1,4 @@
+index.js
 
 node_modules
 dist
@@ -14,5 +15,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-index.js
