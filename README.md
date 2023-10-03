@@ -1,6 +1,7 @@
 # ProductMannager
 
 ---
+
 ## Table of Contents
 
 1. [General Info](#general-info)
@@ -37,33 +38,68 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: main (donde se aloja
 </li>
 </br>
 
+### Entrega 0.2: Manejo de archivos en JavaScript.
+
+<li>Se creará una instancia de la clase “ProductManager”
+<li>Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío []
+<li>Se llamará al método “addProduct” con los campos:
+
+- title: “producto prueba”
+- description:”Este es un producto prueba”
+- price:200,
+- thumbnail:”Sin imagen”
+- code:”abc123”,
+- stock:25
+El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE
+<li>Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado
+<li>Se llamará al método “getProductById” y se corroborará que devuelva el producto con el id especificado, en caso de no existir, debe arrojar un error.
+<li>Se llamará al método “updateProduct” y se intentará cambiar un campo de algún producto, se evaluará que no se elimine el id y que sí se haya hecho la actualización.
+<li>Se llamará al método “deleteProduct”, se evaluará que realmente se elimine el producto o que arroje un error en caso de no existir.
+
+### Entrega 0.3: Servidores con express
+
+Desarrollar un servidor basado en express donde podamos hacer consultas a nuestro archivo de productos.
+</br>
+
+<li>Se instalarán las dependencias a partir del comando npm install </li>
+<li>Se echará a andar el servidor </li>
+<li>Se revisará que el archivo YA CUENTE CON AL MENOS DIEZ PRODUCTOS CREADOS al momento de su entrega, es importante para que los tutores no tengan que crear los productos por sí mismos, y así agilizar el proceso de tu evaluación.</li>
+<li>Se corroborará que el servidor esté corriendo en el puerto 8080.</li>
+<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products sin query, eso debe devolver todos los 10 productos.</li>
+<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products?limit=5 , eso debe devolver sólo los primeros 5 de los 10 productos.</li>
+<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products/2, eso debe devolver sólo el producto con id=2.</li>
+<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products/34123123, al no existir el id del producto, debe devolver un objeto con un error indicando que el producto no existe.</li>
 
 ---
 
 ## Technologies
 
-
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <h2>JS </h2>
 
 </br>
 
+<a href="https://expressjs.com/es/" target="_blank" rel="noreferrer"> <img src="https://geekflare.com/wp-content/uploads/2023/01/expressjs.png" alt="vite" width="190" height="40"/> </a> <h2>Express</h2>
+</br>
+
+<a href="https://sass-lang.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg" alt="sass" width="40" height="40"/> </a> <h2>V2.19.6</h2></p>
+</br>
+
 ---
 
-<!-- ## Installation
+## Installation
 
 Para instalar los paquetes usados en el proyecto puede utilizar los siguientes comandos.
 
 ```
-$ git clone NicolasCaminos/Infinity
-$ npm install
+$ git clone NicolasCaminos/ProductMannager.git
 $ npm init -y
+$ npm install
+$ npm install express
+$ npm install -g nodemon
 $ npm install -g sass
-$ npm start
-$ npm install -g node-sass
-$ npm install --save sanitize.css
 $ npm install sweetalert2
 
-``` -->
+```
 
 ## Collaboration
 
