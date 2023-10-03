@@ -1,6 +1,4 @@
-# ProductMannager
-
----
+# Segunda Entrega
 
 ## Table of Contents
 

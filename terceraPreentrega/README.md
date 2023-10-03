@@ -1,6 +1,4 @@
-# ProductMannager
-
----
+# Tercera Entrega
 
 ## Table of Contents
 
