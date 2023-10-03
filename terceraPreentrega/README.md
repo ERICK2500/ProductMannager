@@ -90,8 +90,8 @@ Para instalar los paquetes usados en el proyecto puede utilizar los siguientes c
 
 ```
 $ git clone NicolasCaminos/ProductMannager.git
-$ npm init -y
 $ npm install
+$ npm init -y
 $ npm install express
 $ npm install -g nodemon
 $ npm install -g sass
