@@ -1,35 +1,49 @@
-// Importar módulos usando la sintaxis de módulos ES6
-import express from 'express';
-import ProductManager from '../products/managers/ProductManager.js';
 
-const filePath = '../products/files/productos.json';
-const productManagers = new ProductManager(filePath);
+import express from 'express';
+import ProductManager from './products/managers/ProductManager.js';
+
+const filePath = './src/products/files/productos.json';
+
+const productManager = new ProductManager(filePath);
 
 const app = express();
 const PORT = 8080;
 
 app.listen(PORT, () => {
-    console.log(`Listening on http://localhost:${PORT}`);
+    console.log(`Listening on PORT 8080`);
 });
 
 app.get('/', async (req, res) => {
-    res.send(`<h1>Bienvenido</h1>`)
+    res.send('<h1>Bienvenido</h1>');
 })
 
 app.get('/products', async (req, res) => {
     try {
-        const products = await productManagers.getProducts();
-        res.json(products);
+        let { limit } = req.query;
+        const products = await productManager.getProducts();
+
+        // Parseo de 'limit' a número
+        limit = parseInt(limit);
+
+        if (isNaN(limit)) {
+            // Si 'limit' no es un número o no se proporciona, se envían todos los productos
+            return res.status(200).json({ products });
+        }
+
+        // Limita el número de productos según 'limit'
+        const limitedProducts = products.slice(0, limit);
+
+        return res.status(200).json({ limitedProducts });
     } catch (error) {
         console.error("Error al obtener los productos:", error);
-        res.status(500).json({ error: "Error al obtener los productos" });
+        return res.status(500).json({ error: "Error al obtener los productos" });
     }
 });
 
 app.get('/products/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const product = await productManagers.getProductById(parseInt(id));
+        const product = await productManager.getProductById(parseInt(id));
 
         if (product) {
             return res.status(200).json({ product });

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon .",
-    "watch:css": "sass --watch src/scss/app.scss:app.css"
+    "dev": "nodemon ."
   },
   "keywords": [],
   "author": "Nicolás Maximiliano Caminos",
