@@ -1,19 +1,19 @@
 // Importar módulos usando la sintaxis de módulos ES6
 import express from 'express';
-import ProductManager from '../products/managers/ProductManager.js';
+import ProductManager from './dao/products/managers/ProductManager.js';
 
-const filePath = '../products/files/productos.json';
+const filePath = './dao/products/files/productos.json';
 const productManagers = new ProductManager(filePath);
 
 const app = express();
 const PORT = 8080;
 
 app.listen(PORT, () => {
-    console.log(`Listening on PORT 8080`);
+    console.log(`Listening on http://localhost:${PORT}`);
 });
 
 app.get('/', async (req, res) => {
-    res.send('<h1>Bienvenido</h1>');
+    res.send(`<h1>Bienvenido</h1>`)
 })
 
 app.get('/products', async (req, res) => {

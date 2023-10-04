@@ -1,12 +1,12 @@
 {
-  "name": "segundapreentrega",
+  "name": "desafio2",
   "version": "1.0.0",
   "description": "Segunda entrega del curso Backend en Coderhouse",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Nicolás Maximiliano Caminos",
   "type": "module",
   "license": "ISC"
 }
