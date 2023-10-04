@@ -142,6 +142,7 @@ No es necesario realizar ninguna implementación visual, todo el flujo se puede 
 Para instalar los paquetes usados en el proyecto puede utilizar los siguientes comandos.
 
 ```
+
 $ git clone NicolasCaminos/ProductMannager.git
 $ npm install
 $ npm init -y
