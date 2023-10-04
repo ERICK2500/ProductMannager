@@ -6,12 +6,18 @@ export default class ProductManager {
     }
 
     getProducts = async () => {
-        if (fs.existsSync(this.path)) {
-            const data = await fs.promises.readFile(this.path, 'utf-8');
-            const products = JSON.parse(data);
-            return products;
+        try {
+            if (fs.existsSync(this.path)) {
+                const data = await fs.promises.readFile(this.path, 'utf-8');
+                const products = JSON.parse(data);
+                return products;
+            } else {
+                throw new Error("El archivo no existe en la ubicación especificada: " + this.path);
+            }
+        } catch (error) {
+            console.error("Error al obtener los productos:", error);
+            throw error;
         }
-        return [];
     }
 
     addProducts = async (product) => {
