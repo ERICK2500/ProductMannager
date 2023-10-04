@@ -103,8 +103,8 @@ Dichos endpoints estarán implementados con el router de express, con las siguie
 
 10. La ruta POST /:cid/product/:pid deberá agregar el producto al arreglo “products” del carrito seleccionado, agregándose como un objeto bajo el siguiente formato:
 
-- product: SÓLO DEBE CONTENER EL ID DEL PRODUCTO (Es crucial que no agregues el producto completo)
-- quantity: debe contener el número de ejemplares de dicho producto. El producto, de momento, se agregará de uno en uno.
+    - product: SÓLO DEBE CONTENER EL ID DEL PRODUCTO (Es crucial que no agregues el producto completo)
+    - uantity: debe contener el número de ejemplares de dicho producto. El producto, de momento, se agregará de uno en uno.
 
 11. Además, si un producto ya existente intenta agregarse al producto, incrementar el campo quantity de dicho producto.
 12. La persistencia de la información se implementará utilizando el file system, donde los archivos “productos,json” y “carrito.json”, respaldan la información.
@@ -113,18 +113,18 @@ Dichos endpoints estarán implementados con el router de express, con las siguie
 
 14. La ruta raíz POST / deberá crear un nuevo carrito con la siguiente estructura:
 
-- Id:Number/String (A tu elección, de igual manera como con los productos, debes asegurar que nunca se dupliquen los ids y que este se autogenere).
-- products: Array que contendrá objetos que representen cada producto
+    - Id:Number/String (A tu elección, de igual manera como con los productos, debes asegurar que nunca se dupliquen los ids y que este se autogenere).
+    - products: Array que contendrá objetos que representen cada producto
 
-2. La ruta GET /:cid deberá listar los productos que pertenezcan al carrito con el parámetro cid proporcionados.
-3. La ruta POST /:cid/product/:pid deberá agregar el producto al arreglo “products” del carrito seleccionado, agregándose como un objeto bajo el siguiente formato:
+15. La ruta GET /:cid deberá listar los productos que pertenezcan al carrito con el parámetro cid proporcionados.
+16. La ruta POST /:cid/product/:pid deberá agregar el producto al arreglo “products” del carrito seleccionado, agregándose como un objeto bajo el siguiente formato:
 
-- product: SÓLO DEBE CONTENER EL ID DEL PRODUCTO (Es crucial que no agregues el producto completo)
-- quantity: debe contener el número de ejemplares de dicho producto. El producto, de momento, se agregará de uno en uno.
+    - product: SÓLO DEBE CONTENER EL ID DEL PRODUCTO (Es crucial que no agregues el producto completo)
+    - quantity: debe contener el número de ejemplares de dicho producto. El producto, de momento, se agregará de uno en uno.
 
-4. Además, si un producto ya existente intenta agregarse al producto, incrementar el campo quantity de dicho producto.
-5. La persistencia de la información se implementará utilizando el file system, donde los archivos “productos,json” y “carrito.json”, respaldan la información.
-   No es necesario realizar ninguna implementación visual, todo el flujo se puede realizar por Postman o por el cliente de tu preferencia.
+17. Además, si un producto ya existente intenta agregarse al producto, incrementar el campo quantity de dicho producto.
+18. La persistencia de la información se implementará utilizando el file system, donde los archivos “productos,json” y “carrito.json”, respaldan la información.
+    No es necesario realizar ninguna implementación visual, todo el flujo se puede realizar por Postman o por el cliente de tu preferencia.
 
 ---
 
@@ -147,6 +147,7 @@ Dichos endpoints estarán implementados con el router de express, con las siguie
 Para instalar los paquetes usados en el proyecto puede utilizar los siguientes comandos.
 
 ```
+
 $ git clone NicolasCaminos/ProductMannager.git
 $ npm install
 $ npm init -y
