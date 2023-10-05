@@ -51,9 +51,9 @@ export default class ProductManager {
                 throw new Error("El producto no existe");
             }
         } catch (error) {
-            // Manejo de errores, puedes imprimir el mensaje de error o lanzar la excepción nuevamente si es necesario
+            
             console.error("Error al obtener el producto:", error);
-            throw error; // Opcionalmente, puedes lanzar la excepción nuevamente para que quien llame a esta función maneje el error
+            throw error;
         }
     }
 
