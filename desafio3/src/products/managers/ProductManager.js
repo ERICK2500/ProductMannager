@@ -51,7 +51,7 @@ export default class ProductManager {
                 throw new Error("El producto no existe");
             }
         } catch (error) {
-            
+
             console.error("Error al obtener el producto:", error);
             throw error;
         }
@@ -66,7 +66,6 @@ export default class ProductManager {
             if (index === -1) {
                 throw new Error("El producto no existe");
             }
-
             products.splice(index, 1);
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
         } catch (error) {

@@ -97,5 +97,33 @@
 		"code": "abc1234567891011",
 		"stock": 25,
 		"id": 11
+	},
+	{
+		"title": "Producto de prueba 12",
+		"description": "Este es un producto de prueba 12",
+		"price": 200,
+		"code": "abc123456789101112",
+		"stock": 25,
+		"thumbnails": [
+			"imagen1.jpg",
+			"imagen2.jpg"
+		],
+		"id": 12
+	},
+	{
+		"id": 13
+	},
+	{
+		"title": "Producto de prueba 14",
+		"description": "Este es un producto de prueba 14",
+		"price": 200,
+		"code": "abc1234567891011121314",
+		"stock": 25,
+		"thumbnails": [
+			"imagen1.jpg",
+			"imagen2.jpg"
+		],
+		"status": "True",
+		"id": 14
 	}
 ]

@@ -14,25 +14,29 @@ export default class ProductManager {
         return [];
     }
 
-    addProducts = async (product) => {
+    async addProducts(product) {
         try {
             const products = await this.getProducts();
+
+            // Verificar si el producto ya existe
             if (products.find(p => p.code === product.code)) {
-                throw new Error("El producto ya existe"); // Lanza un error si el producto ya existe
+                throw new Error("El producto ya existe");
             }
-            if (products.length === 0) {
-                product.id = 1;
-            } else {
-                product.id = products[products.length - 1].id + 1;
-            }
+
+            // Generar un nuevo ID único
+            product.id = this.generateUniqueId(products);
+
+            // Agregar el producto y guardar en el archivo
             products.push(product);
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
-            return product; // Retorna el producto recién agregado
+
+            return product;
         } catch (error) {
             console.error("Error al agregar el producto:", error);
             throw error;
         }
     }
+
     getProductById = async (searchById) => {
         try {
             const data = await fs.promises.readFile(this.path, 'utf-8');
@@ -45,9 +49,8 @@ export default class ProductManager {
                 throw new Error("El producto no existe");
             }
         } catch (error) {
-            // Manejo de errores, puedes imprimir el mensaje de error o lanzar la excepción nuevamente si es necesario
             console.error("Error al obtener el producto:", error);
-            throw error; // Opcionalmente, puedes lanzar la excepción nuevamente para que quien llame a esta función maneje el error
+            throw error;
         }
     }
 
@@ -69,19 +72,21 @@ export default class ProductManager {
         }
     }
 
-    updateProduct = async (_id, attribute, value) => {
+    updateProduct = async (productId, newData) => {
         try {
             const data = await fs.promises.readFile(this.path, 'utf-8');
             const products = JSON.parse(data);
-            const product = products.find(p => p.code === _id);
-
+            const product = products.find(p => p.id === productId);
             if (!product) {
                 throw new Error("El producto no existe");
             }
-
-            product[attribute] = value;
-
+            for (const key in newData) {
+                if (newData.hasOwnProperty(key)) {
+                    product[key] = newData[key];
+                }
+            }
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
+            return product;
         } catch (error) {
             console.error("Error al actualizar el producto:", error);
             throw error;
