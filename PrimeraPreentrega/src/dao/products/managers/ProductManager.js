@@ -69,7 +69,8 @@ export default class ProductManager {
         try {
             const data = await fs.promises.readFile(this.path, 'utf-8');
             const products = JSON.parse(data);
-            const index = products.findIndex(product => product.id === _id);
+
+            const index = products.findIndex(product => product.id === parseInt(_id));
 
             if (index === -1) {
                 throw new Error("El producto no existe");
@@ -77,27 +78,30 @@ export default class ProductManager {
 
             products.splice(index, 1);
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
+
+            return { message: "Producto eliminado con éxito" };
         } catch (error) {
             console.error("Error al eliminar el producto:", error);
             throw error;
         }
     }
-
     updateProduct = async (productId, newData) => {
         try {
             const data = await fs.promises.readFile(this.path, 'utf-8');
             const products = JSON.parse(data);
-            const product = products.find(p => p.id === productId);
-            if (!product) {
+            const productIndex = products.findIndex(p => p.code === productId);
+
+            if (productIndex === 0) {
+                console.error("Producto no encontrado para el ID:", productId);
                 throw new Error("El producto no existe");
             }
-            for (const key in newData) {
-                if (newData.hasOwnProperty(key)) {
-                    product[key] = newData[key];
-                }
-            }
+
+            const updatedProduct = { ...products[productIndex], ...newData };
+            products[productIndex] = updatedProduct;
+
             await fs.promises.writeFile(this.path, JSON.stringify(products, null, '\t'));
-            return product;
+
+            return updatedProduct;
         } catch (error) {
             console.error("Error al actualizar el producto:", error);
             throw error;

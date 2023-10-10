@@ -86,21 +86,25 @@ routers.post('/:cid/product/:pid', async (req, res) => {
     }
 });
 
+
 routers.get('/:cid', async (req, res) => {
     const { cid } = req.params;
 
     try {
-        const products = await cartManagers.getProductsByCartId(cid);
+        const data = await cartManagers.readCartData();
 
-        if (!products) {
-            return res.status(404).json({ error: 'El carrito no existe' });
+        if (data[cid]) {
+            const cartContents = data[cid].products;
+            res.status(200).json(cartContents);
+        } else {
+            res.status(404).json({ error: 'El carrito no existe' });
         }
-
-        res.status(200).json(products);
     } catch (error) {
-        console.error("Error al obtener los productos del carrito:", error);
+        console.error("Error al obtener el carrito:", error);
         res.status(500).json({ error: error.message });
     }
 });
+
+
 
 export default routers

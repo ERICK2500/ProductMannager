@@ -1,14 +1,5 @@
 [
 	{
-		"title": "Producto de prueba editado 1",
-		"description": "Producto de prueba editado 1",
-		"price": 200,
-		"thumbnail": "Sin imagen",
-		"code": "abc1",
-		"stock": 25,
-		"id": 1
-	},
-	{
 		"title": "Producto de prueba editado 2",
 		"description": "Producto de prueba editado 2",
 		"price": 200,
@@ -114,17 +105,18 @@
 		"id": 13
 	},
 	{
-		"title": "Producto de prueba 14",
-		"description": "Este es un producto de prueba 14",
-		"price": 200,
+		"title": "Producto de prueba 15",
+		"description": "ste es un producto de prueba 15",
+		"price": 5,
 		"code": "abc1234567891011121314",
-		"stock": 25,
+		"stock": 543,
 		"thumbnails": [
 			"imagen1.jpg",
 			"imagen2.jpg"
 		],
-		"status": "True",
-		"id": 14
+		"status": true,
+		"id": 14,
+		"category": "dsfsdf"
 	},
 	{
 		"title": "fddsfsd",

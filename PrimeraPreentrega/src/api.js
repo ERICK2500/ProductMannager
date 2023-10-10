@@ -6,9 +6,19 @@ function mostrarJSONEnPagina(jsonData) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const datosFicticios = {
-        nombre: "Ejemplo",
-        edad: 25,
-        ciudad: "Ciudad Ejemplo"
+
+        title: "wdsdfdsfs",
+        description: "fdsfsdfd",
+        code: "ABCcoder.nicolas.fb11rew",
+        price: "432",
+        stock: "4",
+        category: "fdsfsd",
+        thumbnails: [
+            "Sin imagen"
+        ],
+        "status": true,
+        "id": 18
+
     };
 
     mostrarJSONEnPagina(datosFicticios);

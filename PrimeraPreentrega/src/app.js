@@ -23,19 +23,12 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-// app.get('/api/products/addproducts', (req, res) => {
-//     // Aquí renderizas la vista 'addproduct'
-//     res.render('addProducts');
-// });
+
 
 app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
 });
 
-router.post('/api/products', (req, res) => {
-    // Aquí puedes manejar la solicitud POST, procesar los datos y responder
-    res.send('Solicitud POST recibida en la raíz de la aplicación');
-});
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

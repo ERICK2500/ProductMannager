@@ -136,12 +136,24 @@ router.post('/', async (req, res) => {
 
 router.put('/:pid', async (req, res) => {
     try {
-        const { pid } = req.params;
+        const productId = Number(req.params.pid);
         const updatedData = req.body;
 
-        const result = await productManagers.updateProduct(pid, updatedData);
+        const result = await productManagers.updateProduct(productId, updatedData);
 
         res.status(200).json({ message: 'Producto Actualizado con éxito', data: result });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+router.delete('/:pid', async (req, res) => {
+    try {
+        const { pid } = req.params;
+
+        const result = await productManagers.deleteProduct(pid);
+
+        res.status(200).json({ message: 'Producto borrado con éxito', data: result });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
