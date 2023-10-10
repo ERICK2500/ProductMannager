@@ -7,7 +7,7 @@ export default class ProductManager {
         try {
             fs.accessSync(this.path, fs.constants.R_OK | fs.constants.W_OK);
         } catch (err) {
-            // El archivo no existe, crearlo con un array vacío
+    
             fs.writeFileSync(this.path, JSON.stringify([], null, '\t'));
         }
     }

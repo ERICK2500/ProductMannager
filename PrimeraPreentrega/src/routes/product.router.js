@@ -20,15 +20,15 @@ router.get('/', async (req, res) => {
     const { pid, quantity } = req.body;
 
     try {
-        // Cargar los datos del carrito desde el archivo JSON
+
         const cartData = fs.readFileSync(filePath, 'utf-8');
         const carts = JSON.parse(cartData);
 
-        // Busca el carrito específico por su cartId
+
         const cart = carts.find(cart => cart.cartId === cid);
 
         if (!cart) {
-            // Si el carrito no existe, créalo
+
             carts.push({ cartId: cid, products: [] });
         }
 
@@ -39,7 +39,6 @@ router.get('/', async (req, res) => {
             cart.products.push({ productId: pid, quantity });
         }
 
-        // Guardar los cambios en el archivo JSON del carrito
         fs.writeFileSync(filePath, JSON.stringify(carts, null, '\t'));
 
         res.status(200).json(cart);
@@ -82,7 +81,7 @@ router.post('/', async (req, res) => {
     try {
         const { title, description, code, price, stock, category, thumbnails } = req.body;
 
-        // Agrega declaraciones console.log para depurar
+
         // console.log('Datos recibidos en la solicitud:');
         // console.log('Title:', title);
         // console.log('Description:', description);
@@ -96,8 +95,8 @@ router.post('/', async (req, res) => {
             typeof title !== 'string' ||
             typeof description !== 'string' ||
             typeof code !== 'string' ||
-            isNaN(price) || // Verificar si no es un número
-            price <= 0 ||   // Verificar si es un número positivo
+            isNaN(price) ||
+            price <= 0 ||
 
             typeof category !== 'string'
         ) {
@@ -106,15 +105,12 @@ router.post('/', async (req, res) => {
             if (typeof title !== 'string') invalidFields.push('title');
             if (typeof description !== 'string') invalidFields.push('description');
             if (typeof code !== 'string') invalidFields.push('code');
-            if (isNaN(price) || price <= 0) invalidFields.push('price'); // Verificar precio
-            if (typeof stock !== 'number' || stock <= 0) invalidFields.push('stock'); // Verificar stock
+            if (isNaN(price) || price <= 0) invalidFields.push('price');
+            if (typeof stock !== 'number' || stock <= 0) invalidFields.push('stock');
             if (typeof category !== 'string') invalidFields.push('category');
             return res.status(400).json({ error: 'Los siguientes campos son obligatorios y/o no son válidos:', invalidFields });
         }
 
-        // Resto de la lógica para agregar el producto
-
-        // Agregar el producto utilizando el método addProduct de productManagers
         const result = await productManagers.addProduct({
             title,
             description,
@@ -126,7 +122,7 @@ router.post('/', async (req, res) => {
             status: true,
         });
 
-        // Envía una respuesta de éxito si todo está bien
+
         return res.status(200).json({ result });
     } catch (error) {
         console.error("Error al procesar la solicitud:", error);

@@ -59,12 +59,11 @@ routers.post('/:cid/product/:pid', async (req, res) => {
     const { quantity } = req.body;
 
     try {
-        // Leer los datos del carrito desde el archivo JSON
+
         const cartData = fs.readFileSync(filePath, 'utf-8');
         const carts = JSON.parse(cartData);
 
         if (!carts[cid]) {
-            // Si el carrito no existe, créalo
             carts[cid] = { products: [] };
         }
 

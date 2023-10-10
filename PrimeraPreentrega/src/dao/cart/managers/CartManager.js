@@ -3,7 +3,6 @@ import fs from 'fs';
 export default class CartManager {
     constructor(path) {
         this.path = path;
-
         if (!fs.existsSync(this.path)) {
             const initialData = { carts: [] };
             fs.writeFileSync(this.path, JSON.stringify(initialData, null, '\t'));
@@ -58,7 +57,7 @@ export default class CartManager {
     cartProduct = async (cartId, product) => {
         try {
             let carts = [];
-            // Verificar si el archivo existe
+
             if (fs.existsSync(this.path)) {
                 const data = await fs.promises.readFile(this.path, 'utf-8');
                 if (data) {
@@ -66,27 +65,26 @@ export default class CartManager {
                 }
             }
 
-            // Buscar el carrito por su ID
+
             let cart = carts.find(c => c.id === cartId);
 
             if (!cart) {
-                // Si el carrito no existe, créalo
+
                 cart = { id: cartId, products: [] };
                 carts.push(cart);
             }
 
-            // Buscar el producto en el carrito por su ID
             let existingProduct = cart.products.find(p => p.productId === product.productId);
 
             if (existingProduct) {
-                // Si el producto ya existe, aumenta la cantidad
+
                 existingProduct.quantity += product.quantity;
             } else {
-                // Si el producto no existe, agrégalo al carrito
+
                 cart.products.push(product);
             }
 
-            const updatedData = { carts }; // Objeto que contiene los carritos
+            const updatedData = { carts };
             await fs.promises.writeFile(this.path, JSON.stringify(updatedData, null, '\t'));
 
             return product;
