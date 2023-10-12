@@ -124,6 +124,20 @@ Dichos endpoints estarán implementados con el router de express, con las siguie
 18. La persistencia de la información se implementará utilizando el file system, donde los archivos “productos,json” y “carrito.json”, respaldan la información.
     No es necesario realizar ninguna implementación visual, todo el flujo se puede realizar por Postman o por el cliente de tu preferencia.
 
+### Websockets
+
+Configurar nuestro proyecto para que trabaje con Handlebars y websocket.
+<br>
+
+<li>Se instalará y correrá el servidor en el puerto indicado.</li>
+<li>El servidor debe levantarse sin problema.</li>
+<li>Se abrirá la ruta raíz</li>
+<li>Debe visualizarse el contenido de la vista index.handlebars</li>
+<li>No se debe activar el websocket aún.</li>
+<li>Se buscará en la url del navegador la ruta “/realtimeproducts”.</li>
+<li>Se corroborará que el servidor haya conectado con el cliente, en la consola del servidor deberá mostrarse un mensaje de “cliente conectado”.</li>
+<li>Se debe mostrar la lista de productos y se corroborará que se esté enviando desde websocket</li>
+
 ---
 
 ## Technologies
@@ -153,6 +167,8 @@ $ npm install express
 $ npm install -g nodemon
 $ npm install -g sass
 $ npm install sweetalert2
+$ npm install express express-handlebars
+$ npm install socket.io
 $ npm run dev
 
 ```

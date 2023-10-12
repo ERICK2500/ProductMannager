@@ -54,26 +54,15 @@ router.get('/:id', async (req, res) => {
         const product = await productManagers.getProductById(parseInt(id));
 
         if (product) {
-            return res.status(200).json({ product });
+            // Renderiza la vista HTML 'productDetail' y pasa los datos del producto a la vista
+            res.render('home', { product });
         } else {
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'El producto no existe.'
-            });
-
-            return res.status(404).json({ error: 'El producto no existe.' });
+            // Si el producto no existe, muestra un SweetAlert con un mensaje de error
+            res.render('home', { error: 'El producto no existe.' });
         }
     } catch (error) {
-
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: `Error al obtener el producto: ${error.message}`
-        });
-
-        return res.status(500).json({ error: error.message });
+        // Maneja los errores aquí y muestra un SweetAlert con el mensaje de error
+        res.render('home', { error: `Error al obtener el producto: ${error.message}` });
     }
 });
 
@@ -155,3 +144,4 @@ router.delete('/:pid', async (req, res) => {
     }
 });
 export default router
+
