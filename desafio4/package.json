@@ -1,0 +1,47 @@
+{
+  "name": "desafio4",
+  "version": "1.0.3.2",
+  "description": "desafio4",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon .",
+    "start-node": "node src/app.js",
+    "dev": "concurrently \"npm run start\" \"npm run watch:css\"",
+    "watch:css": "sass --watch src/public/scss/style.scss:src/public/css/style.css",
+    "setup": "npm install express && npm install -g nodemon && npm install -g sass && npm install sweetalert2"
+  },
+  "keywords": [
+    "backend",
+    "coderhouse",
+    "preentrega",
+    "node.js",
+    "express",
+    "sass",
+    "comercio electrónico",
+    "tienda en línea",
+    "carrito de compras",
+    "productos",
+    "ventas",
+    "pasarela de pagos",
+    "Router",
+    "Multer",
+    "Websockets",
+    "MongoDB",
+    "Passport",
+    "Mailing",
+    "NEST js",
+    "Product Cloud"
+  ],
+  "author": "Nicolás Maximiliano Caminos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "sass": "^1.68.0",
+    "sweetalert2": "^11.7.31"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
