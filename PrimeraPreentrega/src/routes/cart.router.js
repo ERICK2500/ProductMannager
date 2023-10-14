@@ -17,43 +17,6 @@ const filePath = path.resolve(
 const cartManagers = new CartManager(filePath);
 
 
-routers.get('/', async (req, res) => {
-    try {
-        const { limit } = req.query;
-        const products = await cartManagers.getProducts();
-
-        if (!limit) {
-            return res.status(200).json({ products });
-        }
-
-        const limitValue = parseInt(limit);
-
-        if (isNaN(limitValue)) {
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'El valor de "limit" debe ser un número válido.'
-            });
-
-            return res.status(400).json({ error: 'El valor de "limit" debe }ser un número válido.' });
-        }
-
-        const limitedProducts = products.slice(0, limitValue);
-        return res.status(200).json({ limitedProducts });
-    } catch (error) {
-
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: `Error al obtener los productos: ${error.message}`
-        });
-
-        return res.status(500).json({ error: error.message });
-    }
-});
-
-
 routers.post('/:cid/product/:pid', async (req, res) => {
     const { cid, pid } = req.params;
     const { quantity } = req.body;
@@ -103,7 +66,5 @@ routers.get('/:cid', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-
 
 export default routers

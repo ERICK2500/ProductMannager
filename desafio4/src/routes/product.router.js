@@ -2,7 +2,7 @@ import { Router } from 'express';
 import ProductManager from '../dao/products/managers/ProductManager.js';
 import __dirname from '../utill.js';
 import path from 'path';
-import Swal from 'sweetalert2';
+
 
 const router = Router();
 const filePath = path.resolve(
@@ -16,35 +16,36 @@ const filePath = path.resolve(
 const productManagers = new ProductManager(filePath);
 
 router.get('/', async (req, res) => {
-    const { cid } = req.params;
-    const { pid, quantity } = req.body;
-
     try {
+        const { limit } = req.query;
+        const products = await productManagers.getProducts();
 
-        const cartData = fs.readFileSync(filePath, 'utf-8');
-        const carts = JSON.parse(cartData);
+        res.render('realtime', { products });
 
-
-        const cart = carts.find(cart => cart.cartId === cid);
-
-        if (!cart) {
-
-            carts.push({ cartId: cid, products: [] });
+        if (!limit) {
+            return res.status(200).json({ products });
         }
 
-        const existingProduct = cart.products.find(product => product.productId === pid);
-        if (existingProduct) {
-            existingProduct.quantity += quantity;
-        } else {
-            cart.products.push({ productId: pid, quantity });
+        const limitValue = parseInt(limit);
+
+        if (isNaN(limitValue)) {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El valor de "limit" debe ser un número válido.'
+            });
+
+            return res.status(400).json({ error: 'El valor de "limit" debe }ser un número válido.' });
+
         }
 
-        fs.writeFileSync(filePath, JSON.stringify(carts, null, '\t'));
+        const limitedProducts = products.slice(0, limitValue);
+        return res.status(200).json({ limitedProducts });
 
-        res.status(200).json(cart);
     } catch (error) {
-        console.error("Error al procesar la solicitud:", error);
-        res.status(500).json({ error: error.message });
+
+        res.redirect('/error'); // Asegúrate de configurar una ruta y vista de error
     }
 });
 
@@ -54,10 +55,9 @@ router.get('/:id', async (req, res) => {
         const product = await productManagers.getProductById(parseInt(id));
 
         if (product) {
-            // Renderiza la vista HTML 'productDetail' y pasa los datos del producto a la vista
             res.render('home', { product });
         } else {
-            // Si el producto no existe, muestra un SweetAlert con un mensaje de error
+
             res.render('home', { error: 'El producto no existe.' });
         }
     } catch (error) {

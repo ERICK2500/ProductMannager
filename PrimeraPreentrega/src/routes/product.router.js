@@ -16,35 +16,38 @@ const filePath = path.resolve(
 const productManagers = new ProductManager(filePath);
 
 router.get('/', async (req, res) => {
-    const { cid } = req.params;
-    const { pid, quantity } = req.body;
-
     try {
+        const { limit } = req.query;
+        const products = await productManagers.getProducts();
 
-        const cartData = fs.readFileSync(filePath, 'utf-8');
-        const carts = JSON.parse(cartData);
-
-
-        const cart = carts.find(cart => cart.cartId === cid);
-
-        if (!cart) {
-
-            carts.push({ cartId: cid, products: [] });
+        if (!limit) {
+            return res.status(200).json({ products });
         }
 
-        const existingProduct = cart.products.find(product => product.productId === pid);
-        if (existingProduct) {
-            existingProduct.quantity += quantity;
-        } else {
-            cart.products.push({ productId: pid, quantity });
+        const limitValue = parseInt(limit);
+
+        if (isNaN(limitValue)) {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El valor de "limit" debe ser un número válido.'
+            });
+
+            return res.status(400).json({ error: 'El valor de "limit" debe }ser un número válido.' });
         }
 
-        fs.writeFileSync(filePath, JSON.stringify(carts, null, '\t'));
-
-        res.status(200).json(cart);
+        const limitedProducts = products.slice(0, limitValue);
+        return res.status(200).json({ limitedProducts });
     } catch (error) {
-        console.error("Error al procesar la solicitud:", error);
-        res.status(500).json({ error: error.message });
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: `Error al obtener los productos: ${error.message}`
+        });
+
+        return res.status(500).json({ error: error.message });
     }
 });
 

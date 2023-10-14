@@ -27,29 +27,35 @@
     <div class="textcard">
         <h2 class="u-align-center u-text u-text-1">Testing de Entregable</h2>
     </div>
-    {{#if product}}
+    {{#if products.length}}
     <div class="col">
+        {{#each products}}
         <div class="card cardshop">
-            <img class="card-img-top" {{product.thumbnail}} />
-            <ul>
-                {{#each product.thumbnails}}
-                <li><img src="{{this}}" alt="Imagen del producto"></li>
-                {{/each}}
-            </ul>
-            <div class="card-body">
-                <h5 class="card-title">{{product.title}}</h5>
-                <p id="txtPrecioRea" class="card-text mostrar">{{product.price}} USD</p>
-                <p id="estado" class="card-text">Stock disponible: {{product.stock}}</p>
-                <p class="card-envio">Envio Gratis</p>
-                <a href="#" class="btnAgregar btn btn-primary" data-id="${producto.id}">Agregar al carrito</a>
+            <div class="card cardshop">
+                <img class="card-img-top" {{product.thumbnail}} />
+                <ul>
+                    {{#each product.thumbnails}}
+                    <li><img src="{{this}}" alt="Imagen del producto"></li>
+                    {{/each}}
+                </ul>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.title}}</h5>
+                    <p id="txtPrecioRea" class="card-text mostrar">{{product.price}} USD</p>
+                    <p id="estado" class="card-text">Stock disponible: {{product.stock}}</p>
+                    <p class="card-envio">Envio Gratis</p>
+                    <a href="#" class="btnAgregar btn btn-primary" data-id="${producto.id}">Agregar al carrito</a>
+                </div>
             </div>
         </div>
     </div>
-    {{else}}
-    <div class="alert alert-warning" role="alert">
-        El producto {{product.id}} no existe. Busque otro id producto.
-    </div>
-    {{/if}}
+    {{/each}}
+</div>
+{{else}}
+<div class="alert alert-warning" role="alert">
+    No existen productos cargados.
+</div>
+{{/if}}
+
 
 </div>
 

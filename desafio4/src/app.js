@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path'; // Asegúrate de importar 'path'
 import router from "./routes/product.router.js";
 import routers from "./routes/cart.router.js";
 import handlebars from 'express-handlebars';
@@ -20,17 +19,18 @@ app.engine('handlebars', handlebars.engine());
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'handlebars');
 
-app.get('/', (req, res) => {
-    res.render('home');
-});
 
 
 const server = app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
 });
 
+app.get('/', (req, res) => {
+    res.render('realtime');
+});
 const io = new Server(server);
 
 io.on('connection', socket => {
     console.log('Nuevo cliente conectado')
 });
+
