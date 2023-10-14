@@ -1,0 +1,54 @@
+<div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="https://http2.mlstatic.com/D_NQ_888061-MLA69575761018_052023-OO.webp" class="d-block w-100"
+            alt="..." />
+    </div>
+    <div class="carousel-item">
+        <img src="https://http2.mlstatic.com/D_NQ_878493-MLA69574309400_052023-OO.webp" class="d-block w-100"
+            alt="..." />
+    </div>
+    <div class="carousel-item">
+        <img src="https://http2.mlstatic.com/D_NQ_811354-MLA69590524519_052023-OO.webp" class="d-block w-100"
+            alt="..." />
+    </div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+</button>
+</div>
+<div class="textcard">
+    <h2 class="u-align-center u-text u-text-1">Testing de Entregable</h2>
+</div>
+{{#if product}}
+<div class="col">
+    <div class="card cardshop">
+        <img class="card-img-top" {{product.thumbnail}} />
+        <ul>
+            {{#each product.thumbnails}}
+            <li><img src="{{this}}" alt="Imagen del producto"></li>
+            {{/each}}
+        </ul>
+        <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <p id="txtPrecioRea" class="card-text mostrar">{{product.price}} USD</p>
+            <p id="estado" class="card-text">Stock disponible: {{product.stock}}</p>
+            <p class="card-envio">Envio Gratis</p>
+            <a href="#" class="btnAgregar btn btn-primary" data-id="${producto.id}">Agregar al carrito</a>
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="alert alert-warning" role="alert">
+    El producto {{product.id}} no existe. Busque otro id producto.
+</div>
+{{/if}}
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/home.js"></script>

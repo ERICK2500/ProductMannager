@@ -102,9 +102,6 @@
 		"id": 12
 	},
 	{
-		"id": 13
-	},
-	{
 		"title": "Producto de prueba 15",
 		"description": "ste es un producto de prueba 15",
 		"price": 5,
@@ -117,61 +114,5 @@
 		"status": true,
 		"id": 14,
 		"category": "dsfsdf"
-	},
-	{
-		"title": "fddsfsd",
-		"description": "fdsfs",
-		"code": "fdsfds",
-		"price": 5,
-		"stock": 543,
-		"category": "dsfsdf",
-		"thumbnails": [
-			"imagen1.jpg",
-			"imagen2.jpg"
-		],
-		"status": true,
-		"id": 15
-	},
-	{
-		"title": "fddsfsd",
-		"description": "fdsfs",
-		"code": "dsfdsffsfdsfs",
-		"price": 5,
-		"stock": 543,
-		"category": "dsfsdf",
-		"thumbnails": [
-			[
-				"imagen1.jpg",
-				"imagen2.jpg"
-			]
-		],
-		"status": true,
-		"id": 16
-	},
-	{
-		"title": "fgfdgdfg",
-		"description": "gfdgfdg",
-		"code": "ABC423",
-		"price": "432",
-		"stock": 50,
-		"category": "dgfd",
-		"thumbnails": [
-			"Sin imagen"
-		],
-		"status": true,
-		"id": 17
-	},
-	{
-		"title": "wdsdfdsfs",
-		"description": "fdsfsdfd",
-		"code": "ABCcoder.nicolas.fb11rew",
-		"price": "432",
-		"stock": "4",
-		"category": "fdsfsd",
-		"thumbnails": [
-			"Sin imagen"
-		],
-		"status": true,
-		"id": 18
 	}
 ]

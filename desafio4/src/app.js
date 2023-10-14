@@ -25,9 +25,10 @@ const server = app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
 });
 
-app.get('/', (req, res) => {
-    res.render('realtime');
+app.use('/', (req, res) => {
+    res.redirect('/api/products');
 });
+
 const io = new Server(server);
 
 io.on('connection', socket => {

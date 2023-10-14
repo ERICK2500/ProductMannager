@@ -20,32 +20,12 @@ router.get('/', async (req, res) => {
         const { limit } = req.query;
         const products = await productManagers.getProducts();
 
-        res.render('realtime', { products });
+        // Utiliza la vista 'realtime' para mostrar los productos
+        res.render('home', { products });
 
-        if (!limit) {
-            return res.status(200).json({ products });
-        }
-
-        const limitValue = parseInt(limit);
-
-        if (isNaN(limitValue)) {
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'El valor de "limit" debe ser un número válido.'
-            });
-
-            return res.status(400).json({ error: 'El valor de "limit" debe }ser un número válido.' });
-
-        }
-
-        const limitedProducts = products.slice(0, limitValue);
-        return res.status(200).json({ limitedProducts });
-
+        // Resto de tu código para manejar limit y errores
     } catch (error) {
-
-        res.redirect('/error'); // Asegúrate de configurar una ruta y vista de error
+        res.redirect('/error');
     }
 });
 
@@ -55,14 +35,14 @@ router.get('/:id', async (req, res) => {
         const product = await productManagers.getProductById(parseInt(id));
 
         if (product) {
-            res.render('home', { product });
+            res.render('realtimeproducts', { product });
         } else {
 
-            res.render('home', { error: 'El producto no existe.' });
+            res.render('realtimeproducts', { error: 'El producto no existe.' });
         }
     } catch (error) {
         // Maneja los errores aquí y muestra un SweetAlert con el mensaje de error
-        res.render('home', { error: `Error al obtener el producto: ${error.message}` });
+        res.render('realtimeproducts', { error: `Error al obtener el producto: ${error.message}` });
     }
 });
 

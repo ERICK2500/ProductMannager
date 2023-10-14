@@ -20,7 +20,7 @@ const cartManagers = new CartManager(filePath);
 routers.get('/', async (req, res) => {
     try {
         const { limit } = req.query;
-        const products = await cartManagers.getProducts();
+        const products = await cartManagers.readCartData();
 
         if (!limit) {
             return res.status(200).json({ products });
