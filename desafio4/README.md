@@ -17,7 +17,7 @@ Este sitio nació con la idea de hacer una tienda Ecommerce para productos.
 Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: main (donde se aloja el proyecto final) y en la rama V.01 donde se trabajan las updates y fix.
 </br>
 
-### Entrega 0.1: Clases con ECMAScript y ECMAScript avanzado.
+### Entrega 0.1: Clases con ECMAScript y ECMAScript avanzado
 
 <li>Realizar una clase “ProductManager” que gestione un conjunto de productos.</li>
 <li>Debe crearse desde su constructor con el elemento products, el cual será un arreglo vacío.</li>
@@ -36,7 +36,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: main (donde se aloja
 </li>
 </br>
 
-### Entrega 0.2: Manejo de archivos en JavaScript.
+### Entrega 0.2: Manejo de archivos en JavaScript
 
 <li>Se creará una instancia de la clase “ProductManager”
 <li>Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío []
