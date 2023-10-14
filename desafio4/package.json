@@ -1,7 +1,7 @@
 {
   "name": "desafio4",
   "version": "1.0.3.2",
-  "description": "desafio4",
+  "description": "Entrega del tercer desafio del curso Backend en Coderhouse: Websockets + Handlebars",
   "main": "src/app.js",
   "type": "module",
   "scripts": {
