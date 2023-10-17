@@ -138,6 +138,46 @@ Configurar nuestro proyecto para que trabaje con Handlebars y websocket.
 <li>Se corroborará que el servidor haya conectado con el cliente, en la consola del servidor deberá mostrarse un mensaje de “cliente conectado”.</li>
 <li>Se debe mostrar la lista de productos y se corroborará que se esté enviando desde websocket</li>
 
+### Entrega 0.6: Primera Practica Intregradora
+
+Skills para Clases
+<br>
+
+<li>Comprender el concepto de una clase</li>
+<li>Definición de una clase</li>
+<li>Creación de un Manager y comprensión de su funcionamiento</li>
+<li>Comprender el concepto de un constructor, saber cuándo definir una clase con o sin constructor.</li>
+<li>Definición de propiedades para una clase usando this</li>
+<li>Definición de métodos en una clase.</li>
+<li>Exportar e importar una clase entre diferentes archivos.</li>
+<li>Puedes revisar la clase sobre clases</li>
+<br>
+Skills para Express
+<br>
+<li>Saber definir una carpeta src para tu proyecto</li>
+<li>Instalar Express con npm</li>
+<li>Importar express en nuestro archivo principal</li>
+<li>Comprender el modelo request - response y aplicarlo en nuestra app</li>
+<li>Poner a escuchar nuestro servidor en un puerto específico</li>
+<li>Configurar express para recibir jsons en las request</li>
+<li>Manejo y req.query, req.params y req.body</li>
+<li>Comprender el formato y códigos de status para respuestas</li>
+<li>Puedes revisar la clase 6 y la clase 7 sobre Express</li>
+
+<br>
+
+Skills para Router y Multer
+<br>
+
+<li>Comprender el concepto de Router</li>
+<li>Comprender la arquitectura de carpetas y usar las carpetas “routes” “public” y “files”</li>
+<li>Definir un router de Express</li>
+<li>Importar y exportar tu router correctamente.</li>
+<li>Utilizar el router como middleware a partir de app.use</li>
+<li>Comprender la configuración de Multer</li>
+<li>Exportar un uploader de Multer dentro de tu archivo utils.js</li>
+<li>Usar Multer a partir de FormData</li>
+
 ---
 
 ## Technologies
