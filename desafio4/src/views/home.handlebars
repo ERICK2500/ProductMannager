@@ -32,19 +32,19 @@
         {{#each products}}
         <div class="col-md-4"> <!-- Divide en 3 columnas en dispositivos medianos -->
             <div class="card mb-4">
-                <img src="{{this.thumbnail}}" class="card-img-top" alt="Imagen del producto">
+                <img src='/assets/img/{{this.thumbnail}}' class="card-img-top" alt="Imagen del producto">
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text mostrar">{{this.price}} USD</p>
                     <p class="card-text">Stock disponible: {{this.stock}}</p>
                     <p class="card-envio">Envío Gratis</p>
-                    <a href="#" class="btn btn-primary btnAgregar" data-id="{{this.id}}">Agregar al carrito</a>
+
                 </div>
             </div>
         </div>
         {{/each}}
         {{else}}
-        <div class="alert alert-warning" role="alert">
+        <div class=" alert alert-warning" role="alert">
             No existen productos cargados.
         </div>
         {{/if}}

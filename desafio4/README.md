@@ -170,6 +170,7 @@ $ npm install sweetalert2
 $ npm install express express-handlebars
 $ npm install socket.io
 $ npm run dev
+$ npm run start
 
 ```
 

@@ -154,6 +154,7 @@ $ npm install -g nodemon
 $ npm install -g sass
 $ npm install sweetalert2
 $ npm run dev
+$ npm run start
 
 ```
 
