@@ -25,8 +25,9 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: main (donde se aloja
 - 📁 **desafio1: Clases ECMAScript y ECMAScript avanzado**
 - 📁 **desafio2: Manejo de archivos**
 - 📁 **desafio3: Servidor con Express**
-- 📁 **PrimeraPreentrega: Router y Multer**
+- 📁 **Primera Preentrega: Router y Multer**
 - 📁 **desafio4: Websockets + Handlebars**
+- 📁 **desafio5: Primera práctica integradora**
 
 ---
 
