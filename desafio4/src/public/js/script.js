@@ -33,8 +33,6 @@ fetch('/api/products', {
     }
 })
 
-
-
 // Manejo de errores
 const error = '{{error}}';
 
