@@ -26,10 +26,16 @@ export default class ProductManager {
         }
     }
 
-    getProducts = async () => {
+    getProducts = async (limit) => {
         if (fs.existsSync(this.path)) {
             const data = await fs.promises.readFile(this.path, 'utf-8');
             const products = JSON.parse(data);
+
+            if (limit) {
+                
+                return products.slice(0, limit);
+            }
+
             return products;
         }
         return [];

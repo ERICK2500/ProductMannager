@@ -18,14 +18,10 @@ const productManagers = new ProductManager(filePath);
 router.get('/', async (req, res) => {
     try {
         const { limit } = req.query;
-        const products = await productManagers.getProducts();
-
-        // Utiliza la vista 'realtime' para mostrar los productos
+        const products = await productManagers.getProducts(limit);
         res.render('home', { products });
-
-        // Resto de tu código para manejar limit y errores
     } catch (error) {
-        res.redirect('/error');
+        res.status(500).json({ error: 'Error al obtener los productos' });
     }
 });
 
@@ -37,11 +33,9 @@ router.get('/:id', async (req, res) => {
         if (product) {
             res.render('realtimeproducts', { product });
         } else {
-
             res.render('realtimeproducts', { error: 'El producto no existe.' });
         }
     } catch (error) {
-        // Maneja los errores aquí y muestra un SweetAlert con el mensaje de error
         res.render('realtimeproducts', { error: `Error al obtener el producto: ${error.message}` });
     }
 });

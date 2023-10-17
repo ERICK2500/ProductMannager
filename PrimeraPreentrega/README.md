@@ -17,57 +17,6 @@ Este sitio nació con la idea de hacer una tienda Ecommerce para productos.
 Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: main (donde se aloja el proyecto final) y en la rama V.01 donde se trabajan las updates y fix.
 </br>
 
-### Entrega 0.1: Clases con ECMAScript y ECMAScript avanzado.
-
-<li>Realizar una clase “ProductManager” que gestione un conjunto de productos.</li>
-<li>Debe crearse desde su constructor con el elemento products, el cual será un arreglo vacío.</li>
-<li>Cada producto que gestione debe contar con las propiedades: title (nombre del producto),description (descripción del producto), price (precio), thumbnail (ruta de imagen), code (código identificador), stock (número de piezas disponibles) </li>
-<li>Debe contar con un método “addProduct” el cual agregará un producto al arreglo de productos inicial. 
-</br>
-
-1. Validar que no se repita el campo “code” y que todos los campos sean obligatorios
-2. Al agregarlo, debe crearse con un id autoincrementable
-
-</li>
-<li>Debe contar con un método “getProductById” el cual debe buscar en el arreglo el producto que coincida con el id
-</br>
-
-1. En caso de no coincidir ningún id, mostrar en consola un error “Not found”
-</li>
-</br>
-
-### Entrega 0.2: Manejo de archivos en JavaScript.
-
-<li>Se creará una instancia de la clase “ProductManager”
-<li>Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío []
-<li>Se llamará al método “addProduct” con los campos:
-
-- title: “producto prueba”
-- description:”Este es un producto prueba”
-- price:200,
-- thumbnail:”Sin imagen”
-- code:”abc123”,
-- stock:25
-El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE
-<li>Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado
-<li>Se llamará al método “getProductById” y se corroborará que devuelva el producto con el id especificado, en caso de no existir, debe arrojar un error.
-<li>Se llamará al método “updateProduct” y se intentará cambiar un campo de algún producto, se evaluará que no se elimine el id y que sí se haya hecho la actualización.
-<li>Se llamará al método “deleteProduct”, se evaluará que realmente se elimine el producto o que arroje un error en caso de no existir.
-
-### Entrega 0.3: Servidores con express
-
-Desarrollar un servidor basado en express donde podamos hacer consultas a nuestro archivo de productos.
-</br>
-
-<li>Se instalarán las dependencias a partir del comando npm install </li>
-<li>Se echará a andar el servidor </li>
-<li>Se revisará que el archivo YA CUENTE CON AL MENOS DIEZ PRODUCTOS CREADOS al momento de su entrega, es importante para que los tutores no tengan que crear los productos por sí mismos, y así agilizar el proceso de tu evaluación.</li>
-<li>Se corroborará que el servidor esté corriendo en el puerto 8080.</li>
-<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products sin query, eso debe devolver todos los 10 productos.</li>
-<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products?limit=5 , eso debe devolver sólo los primeros 5 de los 10 productos.</li>
-<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products/2, eso debe devolver sólo el producto con id=2.</li>
-<li>Se mandará a llamar desde el navegador a la url http://localhost:8080/products/34123123, al no existir el id del producto, debe devolver un objeto con un error indicando que el producto no existe.</li>
-
 ### Entrega 0.4: Primera Preentrega
 
 Desarrollar el servidor basado en Node.JS y express, que escuche en el puerto 8080 y disponga de dos grupos de rutas: /products y /carts.

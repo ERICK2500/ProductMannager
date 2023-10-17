@@ -1,12 +1,11 @@
-
 const socket = io();
 
 // Función para renderizar productos en la interfaz
 function renderProducts(products) {
-    const productContainer = document.getElementById('row');
+    const productContainer = document.querySelector('.row'); // Busca el elemento por su clase "row"
 
     if (!productContainer) {
-        console.error('El elemento product-list no se encontró en el DOM.');
+        console.error('El elemento row no se encontró en el DOM.');
         return;
     }
 
@@ -25,7 +24,6 @@ function renderProducts(products) {
     });
 }
 
-
 fetch('/api/products')
     .then((response) => {
         if (!response.ok) {
@@ -39,10 +37,6 @@ fetch('/api/products')
     .catch((error) => {
         console.error(`Error al obtener los productos: ${error.message}`);
     });
-
-socket.on('product', (products) => {
-    renderProducts(products);
-});
 
 // Manejo de errores
 const error = '{{error}}';

@@ -124,7 +124,7 @@ Dichos endpoints estarán implementados con el router de express, con las siguie
 18. La persistencia de la información se implementará utilizando el file system, donde los archivos “productos,json” y “carrito.json”, respaldan la información.
     No es necesario realizar ninguna implementación visual, todo el flujo se puede realizar por Postman o por el cliente de tu preferencia.
 
-### Websockets
+### Entrega 0.5: Websocket + Handlebars
 
 Configurar nuestro proyecto para que trabaje con Handlebars y websocket.
 <br>
