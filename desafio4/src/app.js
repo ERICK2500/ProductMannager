@@ -29,8 +29,12 @@ app.use('/', (req, res) => {
     res.redirect('/api/products');
 });
 
+
 const io = new Server(server);
 
-io.on('connection', socket => {
-    console.log('Nuevo cliente conectado')
+io.on('connection', (socket) => {
+    console.log('Nuevo cliente conectado');
+    socket.on('bienvenida', (mensaje) => {
+        console.log('Mensaje de bienvenida:', mensaje);
+    });
 });

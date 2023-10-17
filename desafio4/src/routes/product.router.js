@@ -19,11 +19,19 @@ router.get('/', async (req, res) => {
     try {
         const { limit } = req.query;
         const products = await productManagers.getProducts(limit);
-        res.render('home', { products });
+
+        if (req.headers.accept === 'application/json') {
+
+            res.json({ products });
+        } else {
+
+            res.render('home', { products });
+        }
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener los productos' });
     }
-});
+})
+
 
 router.get('/:id', async (req, res) => {
     try {
