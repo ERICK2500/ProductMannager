@@ -77,7 +77,7 @@ router.delete('/:pid', async (request, response) => {
     try {
         const { pid } = request.params
         const result = await pm.deleteProduct(Number(pid))
-
+        console.log(pid);
         if (result.status === 'error') return response.status(400).send(result.message);
 
         return response.status(200).send(result.message);

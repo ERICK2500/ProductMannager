@@ -79,27 +79,5 @@
 		"code": "abc12345678910",
 		"stock": 25,
 		"id": 10
-	},
-	{
-		"title": "producto prueba 11",
-		"description": "Este es un producto prueba 11",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
-		"code": "abc1234567891011",
-		"stock": 25,
-		"id": 11
-	},
-	{
-		"title": "fdsfds",
-		"description": "fdsf",
-		"price": 4,
-		"code": "fdsfsdfdsf",
-		"stock": 1,
-		"status": true,
-		"category": "dfsfds",
-		"thumbnails": [
-			"empty"
-		],
-		"id": 12
 	}
 ]

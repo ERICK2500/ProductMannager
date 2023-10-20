@@ -1,3 +1,5 @@
+
+
 const socket = io()
 const products = document.getElementById('products');
 const formulario = document.getElementById('form')
@@ -27,6 +29,7 @@ const btnEliminar = () => {
                     socket.on('delete', (event) => {
                         // console.log(event);  
                         Swal.fire(event.message, '', 'success')
+                        window.location.reload();
                     })
 
                 } else {
@@ -115,6 +118,7 @@ formulario.addEventListener('submit', (event) => {
                 text: res.message,
 
             })
+
         }
     })
     formulario.reset()
