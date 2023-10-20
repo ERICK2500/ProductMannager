@@ -1,40 +1,39 @@
 import express from 'express';
-import router from "./routes/product.router.js";
-import routers from "./routes/cart.router.js";
+import routerP from "./routes/product.router.js";
+import routerC from "./routes/cart.router.js";
+import routerV from "./routes/view.router.js";
 import handlebars from 'express-handlebars';
 import { Server } from 'socket.io'
 import __dirname from './utill.js';
+import socketProducts from './util.socket.js';
 
 const app = express();
-const PORT = 8080;
+const PORT = 8080
 
+app.use(express.static(`${__dirname}/public`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(`${__dirname}/public`))
-app.use('/api/carts', routers);
-app.use('/api/products', router);
-app.use('/assets', express.static('assets'));
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', `${__dirname}/views`);
 app.set('view engine', 'handlebars');
 
 
+app.use('/api/products', routerP)
+app.use('/api/carts', routerC)
+app.use('/', routerV);
 
-const server = app.listen(PORT, () => {
-    console.log(`Listening on http://localhost:${PORT}`);
+const httpServer = app.listen(PORT, () => {
+    try {
+        console.log(`Listening to the porthttp://localhost:${PORT}`);
+        console.log("http://localhost:8080/")
+        console.log("http://localhost:8080/realtimeproducts");
+    }
+    catch (err) {
+        console.log(err);
+    }
 });
 
-app.use('/', (req, res) => {
-    res.redirect('/api/products');
-});
+const socketServer = new Server(httpServer)
 
-
-const io = new Server(server);
-
-io.on('connection', (socket) => {
-    console.log('Nuevo cliente conectado');
-    socket.on('bienvenida', (mensaje) => {
-        console.log('Mensaje de bienvenida:', mensaje);
-    });
-});
+socketProducts(socketServer)

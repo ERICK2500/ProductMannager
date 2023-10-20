@@ -1,5 +1,6 @@
 import fs from 'fs';
 import __dirname from '../../../utill.js';
+
 export default class ProductManager {
     constructor(path) {
         this.path = path;
@@ -41,23 +42,22 @@ export default class ProductManager {
         return [];
     }
     generateUniqueId(products, deletedIds) {
-        // Obtén los IDs existentes en los productos
+      
         const existingIds = products.map(product => product.id);
 
-        // Combina los IDs existentes con los IDs eliminados
+    
         const allIds = existingIds.concat(deletedIds);
 
-        // Encuentra el ID más alto en uso
+
         const maxId = allIds.length > 0 ? Math.max(...allIds) : 0;
 
-        // Busca el primer ID disponible, comenzando desde 1
         for (let newId = 1; newId <= maxId + 1; newId++) {
             if (!allIds.includes(newId)) {
                 return newId;
             }
         }
 
-        return maxId + 1; // En caso de que no haya IDs disponibles
+        return maxId + 1;
     }
 
     addProduct = async (product) => {

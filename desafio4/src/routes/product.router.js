@@ -13,117 +13,80 @@ const filePath = path.resolve(
     'productos.json'
 );
 
-const productManagers = new ProductManager(filePath);
+const pm = new ProductManager(filePath);
 
-router.get('/', async (req, res) => {
+
+
+router.get('/:pid', async (request, response) => {
     try {
-        const { limit } = req.query;
-        const products = await productManagers.getProducts(limit);
+        const { pid } = request.params
 
-        if (req.headers.accept === 'application/json') {
-
-            res.json({ products });
-        } else {
-
-            res.render('home', { products });
+        // Consulta si el parámetro es un número ya que el ID es numérico
+        if (isNaN(Number(pid))) {
+            return response.status(400).send({ message: 'Invalid identification' });
         }
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener los productos' });
+
+        // Se devuelve el resultado
+        const result = await pm.getProductById(pid)
+
+        // Si el valor de status es 'error' devuelve un error
+        if (result.status === 'error') return response.status(400).send(result.message);
+
+        // Resultado
+        return response.status(200).send(result);
+    } catch (err) {
+        console.log(err);
+    }
+
+})
+
+router.post('/', async (request, response) => {
+    try {
+        const product = request.body
+
+        const result = await pm.addProduct(product)
+
+        if (result.status === 'error') return response.status(400).send(result.message);
+
+        return response.status(201).send({ result: result.message, product });
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
+
+router.put('/:pid', async (request, response) => {
+    try {
+        const { pid } = request.params
+        const product = request.body
+
+        const result = await pm.updateProduct(Number(pid), product)
+
+        if (result.status === 'error') return response.status(400).send({ result });
+
+        return response.status(200).send(`${result.message} whit ID: ${pid}`)
+    }
+    catch (err) {
+        console.log(err);
+    }
+    ;
+
+})
+
+router.delete('/:pid', async (request, response) => {
+    try {
+        const { pid } = request.params
+        const result = await pm.deleteProduct(Number(pid))
+
+        if (result.status === 'error') return response.status(400).send(result.message);
+
+        return response.status(200).send(result.message);
+
+    } catch (err) {
+        console.log(err);
     }
 })
 
 
-router.get('/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const product = await productManagers.getProductById(parseInt(id));
-
-        if (product) {
-            res.render('realtimeproducts', { product });
-        } else {
-            res.render('realtimeproducts', { error: 'El producto no existe.' });
-        }
-    } catch (error) {
-        res.render('realtimeproducts', { error: `Error al obtener el producto: ${error.message}` });
-    }
-});
-
-router.post('/', async (req, res) => {
-    try {
-        const { title, description, code, price, stock, category, thumbnails } = req.body;
-
-
-        // console.log('Datos recibidos en la solicitud:');
-        // console.log('Title:', title);
-        // console.log('Description:', description);
-        // console.log('Code:', code);
-        // console.log('Price:', price);
-        // console.log('Stock:', stock);
-        // console.log('Category:', category);
-        // console.log('Thumbnails:', thumbnails);
-
-        if (
-            typeof title !== 'string' ||
-            typeof description !== 'string' ||
-            typeof code !== 'string' ||
-            isNaN(price) ||
-            price <= 0 ||
-
-            typeof category !== 'string'
-        ) {
-            const invalidFields = [];
-
-            if (typeof title !== 'string') invalidFields.push('title');
-            if (typeof description !== 'string') invalidFields.push('description');
-            if (typeof code !== 'string') invalidFields.push('code');
-            if (isNaN(price) || price <= 0) invalidFields.push('price');
-            if (typeof stock !== 'number' || stock <= 0) invalidFields.push('stock');
-            if (typeof category !== 'string') invalidFields.push('category');
-            return res.status(400).json({ error: 'Los siguientes campos son obligatorios y/o no son válidos:', invalidFields });
-        }
-
-        const result = await productManagers.addProduct({
-            title,
-            description,
-            code: `ABC${code}`,
-            price,
-            stock,
-            category,
-            thumbnails: thumbnails ? [thumbnails] : ["Sin imagen"],
-            status: true,
-        });
-
-
-        return res.status(200).json({ result });
-    } catch (error) {
-        console.error("Error al procesar la solicitud:", error);
-        return res.status(500).json({ error: error.message });
-    }
-});
-
-router.put('/:pid', async (req, res) => {
-    try {
-        const productId = Number(req.params.pid);
-        const updatedData = req.body;
-
-        const result = await productManagers.updateProduct(productId, updatedData);
-
-        res.status(200).json({ message: 'Producto Actualizado con éxito', data: result });
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
-
-router.delete('/:pid', async (req, res) => {
-    try {
-        const { pid } = req.params;
-
-        const result = await productManagers.deleteProduct(pid);
-
-        res.status(200).json({ message: 'Producto borrado con éxito', data: result });
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
 export default router
 

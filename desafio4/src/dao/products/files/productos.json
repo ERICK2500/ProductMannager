@@ -88,5 +88,18 @@
 		"code": "abc1234567891011",
 		"stock": 25,
 		"id": 11
+	},
+	{
+		"title": "fdsfds",
+		"description": "fdsf",
+		"price": 4,
+		"code": "fdsfsdfdsf",
+		"stock": 1,
+		"status": true,
+		"category": "dfsfds",
+		"thumbnails": [
+			"empty"
+		],
+		"id": 12
 	}
 ]

@@ -1,6 +1,4 @@
-# ProductMannager
-
----
+# ProductManager
 
 ## Table of Contents
 
@@ -13,12 +11,11 @@
 
 ## General Info
 
-Sitio web creado para el curso de "Backend" en Coderhouse
-</br>
+Sitio web creado para el curso de "Backend" en Coderhouse.
+
 Este sitio nació con la idea de hacer una tienda Ecommerce para productos.
-</br>
-Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: main (donde se aloja el proyecto final) y en la rama V.01 donde se trabajan las updates y fix.
-</br>
+
+Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se aloja el proyecto final) y en la rama `V.01` donde se trabajan las updates y fixes.
 
 ## Folder Structure
 
@@ -47,35 +44,20 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: main (donde se aloja
 
 ## Installation
 
-Para instalar los paquetes usados en el proyecto puede utilizar los siguientes comandos.
+Para instalar los paquetes usados en el proyecto, puede utilizar los siguientes comandos:
 
-```
-
-$ git clone NicolasCaminos/ProductMannager.git
-$ npm install
-$ npm init -y
-$ npm install express
-$ npm install -g nodemon
-$ npm install -g sass
-$ npm install sweetalert2
-$ npm start
+```bash
+git clone NicolasCaminos/ProductMannager.git
+npm install
+npm init -y
+npm install express
+npm install -g nodemon
+npm install -g sass
+npm install sweetalert2
+npm start
 
 ```
 
 ## Collaboration
 
-<li>Nicolás Caminos</li>
-
-</br>
-
----
-
-<!-- ## FAQs
-
-Puede visitar la web en: <a href="https://nicolascaminos.github.io/Infinity/" target="_blank" rel="noreferrer"> <img src="img/3.png" alt="Infinity" width="40" height="40"/> </a><a href="https://nicolascaminos.github.io/Infinity/" target="_blank" rel="noreferrer">https://nicolascaminos.github.io/Infinity/</a>
-
-<br>
-Muchas Gracias.
-<br>
-
---- -->
+- Nicolás Caminos
