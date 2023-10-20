@@ -79,5 +79,18 @@
 		"code": "abc12345678910",
 		"stock": 25,
 		"id": 10
+	},
+	{
+		"title": "Sony PlayStation 5 825GB Standard color blanco y negro",
+		"description": "Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.",
+		"price": 500,
+		"code": "123456789101213141516121896",
+		"stock": 50,
+		"status": true,
+		"category": "Gaming",
+		"thumbnails": [
+			"empty"
+		],
+		"id": 14
 	}
 ]
