@@ -47,14 +47,17 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 Para instalar los paquetes usados en el proyecto, puede utilizar los siguientes comandos:
 
 ```bash
-git clone NicolasCaminos/ProductMannager.git
-npm install
-npm init -y
-npm install express
-npm install -g nodemon
-npm install -g sass
-npm install sweetalert2
-npm start
+$ git clone NicolasCaminos/ProductMannager.git
+$ npm install
+$ npm init -y
+$ npm install express
+$ npm install -g nodemon
+$ npm install -g sass
+$ npm install sweetalert2
+$ npm install express express-handlebars
+$ npm install socket.io
+$ npm run dev
+$ npm run start
 
 ```
 
