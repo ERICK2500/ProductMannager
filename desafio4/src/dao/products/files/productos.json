@@ -78,6 +78,7 @@
 		"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
 		"code": "abc12345678910",
 		"stock": 25,
+		"status": true,
 		"id": 10
 	},
 	{
@@ -92,5 +93,18 @@
 			"empty"
 		],
 		"id": 14
+	},
+	{
+		"title": "Monitor Led Samsung 22'' Con Diseño Sin Bordes - Lf22t35 Dark blue gray",
+		"description": " Diseño minimalista, máxima concentración. La pantalla sin bordes en tres de sus lados aporta una estética clara y moderna a cualquier entorno de trabajo. En un entorno de varios monitores, las pantallas se alinean a la perfección para una vista prácticamente sin espacios y sin distracciones.",
+		"price": 1000,
+		"code": "gfd1000",
+		"stock": 9,
+		"status": true,
+		"category": "Smart TV",
+		"thumbnails": [
+			"empty"
+		],
+		"id": 22
 	}
 ]
