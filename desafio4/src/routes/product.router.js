@@ -17,6 +17,38 @@ const pm = new ProductManager(filePath);
 
 
 
+router.get('/', async (request, response) => {
+    try {
+        //Limit recibido
+        let { limit } = request.query
+
+        // Productos
+        const products = await pm.getProducts();
+
+        // Si no se pasa un limit devuelve todos los productos
+        if (!limit) return response.status(200).send({ products })
+
+        // parseo de limit
+        if (isNaN(Number(limit))) return response.status(400).send({ message: 'The limit is invalid' })
+        limit = Number(limit)
+
+        "Si el limit es menor a cero se devuelve un error"
+        if (limit < 0) return response.status(400).send({ message: 'The limit cannot be less than 0' })
+        // Si el límite es menor a la cantidad de productos disponibles entra al condicional
+        if (products.length > limit) {
+            const limitProduct = products.slice(0, limit)
+            return response.status(200).send({ limit, products: limitProduct });
+        }
+
+        // Caso de que el limit sea mayor a lo disponible
+        return response.status(200).send({ products });
+    } catch (err) {
+        console.log(err);
+    }
+
+
+})
+
 router.get('/:pid', async (request, response) => {
     try {
         const { pid } = request.params
@@ -77,7 +109,7 @@ router.delete('/:pid', async (request, response) => {
     try {
         const { pid } = request.params
         const result = await pm.deleteProduct(Number(pid))
-        console.log(pid);
+
         if (result.status === 'error') return response.status(400).send(result.message);
 
         return response.status(200).send(result.message);
@@ -87,6 +119,4 @@ router.delete('/:pid', async (request, response) => {
     }
 })
 
-
 export default router
-

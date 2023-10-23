@@ -9,35 +9,37 @@ const filePath = path.resolve(
     'files',
     'productos.json'
 );
-const pm = new ProductManager(filePath)
+const pm = new ProductManager(filePath);
 
 export default function socketProducts(socketServer) {
     socketServer.on('connection', async socket => {
 
-        const data = await pm.getProducts()
+        const sendProductsUpdate = async () => {
+            const data = await pm.getProducts();
+            socket.emit('products', { data });
+        };
 
-        socket.emit('products', { data })
+        // Enviar la lista de productos al cliente cuando se conecta
+        sendProductsUpdate();
 
         socket.on('product', async data => {
-
             try {
-                const valueReturned = await pm.addProduct(data)
+                const valueReturned = await pm.addProduct(data);
 
-                socket.emit('message', valueReturned)
-            }
-            catch (err) {
+                // Enviar un mensaje de éxito y actualizar la lista de productos
+                socket.emit('message', valueReturned);
+                sendProductsUpdate();
+            } catch (err) {
                 console.log(err);
             }
-
-        })
+        });
 
         socket.on('delete', async data => {
+            const result = await pm.deleteProduct(data);
 
-            const result = await pm.deleteProduct(data)
-
-            socket.emit('delete', result)
-        })
-
-
-    })
+            // Enviar el resultado de la eliminación y actualizar la lista de productos
+            socket.emit('delete', result);
+            sendProductsUpdate();
+        });
+    });
 }

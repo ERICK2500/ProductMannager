@@ -1,110 +1,97 @@
-[
-	{
-		"title": "Producto de prueba editado 2",
-		"description": "Producto de prueba editado 2",
-		"price": 200,
-		"thumbnail": "D_604790-709477-MLA50912283543_072022-V.webp",
-		"code": "abc12",
-		"stock": 25,
-		"id": 2
-	},
-	{
-		"title": "producto prueba 3",
-		"description": "Este es un producto prueba 3",
-		"price": 200,
-		"thumbnail": "D_604790-854793-MLA50262132804_062022-V.webp",
-		"code": "abc123",
-		"stock": 25,
-		"id": 3
-	},
-	{
-		"title": "producto prueba 4",
-		"description": "Este es un producto prueba 4",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_774850-MLA43495940257_092020-F.webp",
-		"code": "abc1234",
-		"stock": 25,
-		"id": 4
-	},
-	{
-		"title": "Notebook Dell Inspiron 3525 plateada 15.5, AMD Ryzen 5 5625U 8GB de RAM 256GB SSD, AMD Radeon RX Vega 7 120 Hz 1920x1080px Windows 11 Home",
-		"description": "Los equipos Dell se destacan por ofrecer soluciones reales para cada una de las necesidades. Ya sea para conectarte, entretenerte, trabajar o colaborar de manera online, podrás hacerlo de forma segura desde cualquier lugar y en cualquier momento",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_945214-MLU70064740529_062023-F.webp",
-		"code": "abc12345",
-		"stock": 25,
-		"id": 5
-	},
-	{
-		"title": "Notebook Lenovo IdeaPad 3i Intel I5 1135g7 Ram 8gb Ssd 256gb Full hd Windows 11",
-		"description": "La notebook Lenovo 81X700FVUS es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_628007-MLA71654329295_092023-F.webp",
-		"code": "abc123456",
-		"stock": 25,
-		"id": 6
-	},
-	{
-		"title": "Notebook Asus Intel I5 1135g7 8gb 256gb Ssd 15.6 Full Hd Windows 11 Home",
-		"description": "Ya sea para trabajar o jugar, la computadora portátil ASUS Vivobook 15 F1500 es la computadora portátil de nivel de entrada que ofrece un rendimiento potente y efectos visuales inmersivos. La pantalla Nano Edge de la computadora portátil ASUS Vivobook 15 cuenta con amplios ángulos de visión de 178 grados. ASUS Vivobook 15 Laptop viene con procesador Intel Core i5, 8GB RAM, 256GB SSD y Windows 11 Home. La computadora portátil ASUS Vivobook 15 está equipada con todos los puertos que necesita. Viene con una amplia conectividad con USB 3.2 Gen 1 tipo C, USB 3.2 Gen 1 tipo A, USB 2.0 tipo A, conector de audio combinado de 3,5 mm, Wi-Fi 5 (802.11ac) y Bluetooth 4.1",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
-		"code": "abc1234567",
-		"stock": 25,
-		"id": 7
-	},
-	{
-		"title": "producto prueba 8",
-		"description": "Este es un producto prueba 8",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
-		"code": "abc12345678",
-		"stock": 25,
-		"id": 8
-	},
-	{
-		"title": "producto prueba 9",
-		"description": "Este es un producto prueba 9",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
-		"code": "abc123456789",
-		"stock": 25,
-		"id": 9
-	},
-	{
-		"title": "producto prueba 10",
-		"description": "Este es un producto prueba 10",
-		"price": 200,
-		"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
-		"code": "abc12345678910",
-		"stock": 25,
-		"status": true,
-		"id": 10
-	},
-	{
-		"title": "Sony PlayStation 5 825GB Standard color blanco y negro",
-		"description": "Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.",
-		"price": 500,
-		"code": "abc1234567891011121314",
-		"stock": 50,
-		"status": true,
-		"category": "Gaming",
-		"thumbnails": [
-			"empty"
-		],
-		"id": 14
-	},
-	{
-		"title": "Monitor Led Samsung 22'' Con Diseño Sin Bordes - Lf22t35 Dark blue gray",
-		"description": " Diseño minimalista, máxima concentración. La pantalla sin bordes en tres de sus lados aporta una estética clara y moderna a cualquier entorno de trabajo. En un entorno de varios monitores, las pantallas se alinean a la perfección para una vista prácticamente sin espacios y sin distracciones.",
-		"price": 1000,
-		"code": "abc12345678910111213141516171819202122",
-		"stock": 9,
-		"status": true,
-		"category": "Smart TV",
-		"thumbnails": [
-			"empty"
-		],
-		"id": 22
-	}
-]
+	}[
+		{
+			"title": "Producto de prueba editado 2",
+			"description": "Producto de prueba editado 2",
+			"price": 200,
+			"thumbnail": "D_604790-709477-MLA50912283543_072022-V.webp",
+			"code": "abc12",
+			"stock": 25,
+			"id": 2
+		},
+		{
+			"title": "producto prueba 3",
+			"description": "Este es un producto prueba 3",
+			"price": 200,
+			"thumbnail": "D_604790-854793-MLA50262132804_062022-V.webp",
+			"code": "abc123",
+			"stock": 25,
+			"id": 3
+		},
+		{
+			"title": "producto prueba 4",
+			"description": "Este es un producto prueba 4",
+			"price": 200,
+			"thumbnail": "D_NQ_NP_2X_774850-MLA43495940257_092020-F.webp",
+			"code": "abc1234",
+			"stock": 25,
+			"id": 4
+		},
+		{
+			"title": "Notebook Dell Inspiron 3525 plateada 15.5, AMD Ryzen 5 5625U 8GB de RAM 256GB SSD, AMD Radeon RX Vega 7 120 Hz 1920x1080px Windows 11 Home",
+			"description": "Los equipos Dell se destacan por ofrecer soluciones reales para cada una de las necesidades. Ya sea para conectarte, entretenerte, trabajar o colaborar de manera online, podrás hacerlo de forma segura desde cualquier lugar y en cualquier momento",
+			"price": 200,
+			"thumbnail": "D_NQ_NP_2X_945214-MLU70064740529_062023-F.webp",
+			"code": "abc12345",
+			"stock": 25,
+			"id": 5
+		},
+		{
+			"title": "Notebook Lenovo IdeaPad 3i Intel I5 1135g7 Ram 8gb Ssd 256gb Full hd Windows 11",
+			"description": "La notebook Lenovo 81X700FVUS es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina",
+			"price": 200,
+			"thumbnail": "D_NQ_NP_2X_628007-MLA71654329295_092023-F.webp",
+			"code": "abc123456",
+			"stock": 25,
+			"id": 6
+		},
+		{
+			"title": "Notebook Asus Intel I5 1135g7 8gb 256gb Ssd 15.6 Full Hd Windows 11 Home",
+			"description": "Ya sea para trabajar o jugar, la computadora portátil ASUS Vivobook 15 F1500 es la computadora portátil de nivel de entrada que ofrece un rendimiento potente y efectos visuales inmersivos. La pantalla Nano Edge de la computadora portátil ASUS Vivobook 15 cuenta con amplios ángulos de visión de 178 grados. ASUS Vivobook 15 Laptop viene con procesador Intel Core i5, 8GB RAM, 256GB SSD y Windows 11 Home. La computadora portátil ASUS Vivobook 15 está equipada con todos los puertos que necesita. Viene con una amplia conectividad con USB 3.2 Gen 1 tipo C, USB 3.2 Gen 1 tipo A, USB 2.0 tipo A, conector de audio combinado de 3,5 mm, Wi-Fi 5 (802.11ac) y Bluetooth 4.1",
+			"price": 200,
+			"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
+			"code": "abc1234567",
+			"stock": 25,
+			"id": 7
+		},
+		{
+			"title": "producto prueba 8",
+			"description": "Este es un producto prueba 8",
+			"price": 200,
+			"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
+			"code": "abc12345678",
+			"stock": 25,
+			"id": 8
+		},
+		{
+			"title": "producto prueba 9",
+			"description": "Este es un producto prueba 9",
+			"price": 200,
+			"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
+			"code": "abc123456789",
+			"stock": 25,
+			"id": 9
+		},
+		{
+			"title": "producto prueba 10",
+			"description": "Este es un producto prueba 10",
+			"price": 200,
+			"thumbnail": "D_NQ_NP_2X_754347-MLU69857982717_062023-F.webp",
+			"code": "abc12345678910",
+			"stock": 25,
+			"status": true,
+			"id": 10
+		},
+		{
+			"title": "Sony PlayStation 5 825GB Standard color blanco y negro",
+			"description": "Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.",
+			"price": 500,
+			"code": "123456789101213141516121896",
+			"stock": 50,
+			"status": true,
+			"category": "Gaming",
+			"thumbnails": [
+				"empty"
+			],
+			"id": 14
+		}
+	]
