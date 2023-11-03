@@ -1,109 +1,83 @@
-import { Router } from 'express';
-import CartManager from '../dao/cart/managers/CartManager.js';
-import __dirname from '../utill.js';
-import path from 'path';
-import Swal from 'sweetalert2';
-import fs from 'fs'
+import { Router, request, response } from 'express';
+import CartManager from '../dao/mongo/managers/carts.js';
+import ProductManager from '../dao/mongo/managers/products.js';
 
-const routers = Router();
-const filePath = path.resolve(
-    __dirname,
-    'dao',
-    'cart',
-    'files',
-    'carrito.json'
-);
+const routerC = Router()
 
-const cartManagers = new CartManager(filePath);
+const cm = new CartManager()
+const pm = new ProductManager()
 
+routerC.get('/', async (request, response) => {
+    const result = await cm.getCarts()
+    console.log(result);
+    return response.status(200).send(result)
+})
 
-routers.get('/', async (req, res) => {
+routerC.get('/:cid', async (request, response) => {
     try {
-        const { limit } = req.query;
-        const products = await cartManagers.readCartData();
+        const { cid } = request.params
 
-        if (!limit) {
-            return res.status(200).json({ products });
-        }
+        const result = await cm.getCartById(cid)
 
-        const limitValue = parseInt(limit);
+        // Si el resultado del GET tiene la propiedad 'CastError' devuelve un error
+        if (!result) return response.status(404).send({ message: 'ID not found' });
+        // if (result.status === 'error') 
 
-        if (isNaN(limitValue)) {
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'El valor de "limit" debe ser un número válido.'
-            });
-
-            return res.status(400).json({ error: 'El valor de "limit" debe }ser un número válido.' });
-        }
-
-        const limitedProducts = products.slice(0, limitValue);
-        return res.status(200).json({ limitedProducts });
-    } catch (error) {
-
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: `Error al obtener los productos: ${error.message}`
-        });
-
-        return res.status(500).json({ error: error.message });
+        // Resultado
+        return response.status(200).send(result);
+    } catch (err) {
+        console.log(err);
     }
-});
+
+})
 
 
-routers.post('/:cid/product/:pid', async (req, res) => {
-    const { cid, pid } = req.params;
-    const { quantity } = req.body;
-
+routerC.post('/', async (request, response) => {
     try {
+        const { products } = request.body
 
-        const cartData = fs.readFileSync(filePath, 'utf-8');
-        const carts = JSON.parse(cartData);
+        if (!Array.isArray(products)) return response.status(400).send({ status: 'error', message: 'TypeError' });
 
-        if (!carts[cid]) {
-            carts[cid] = { products: [] };
-        }
+        // Corroborar si todos los ID de los productos existen
+        const results = await Promise.all(products.map(async (product) => {
+            const checkId = await pm.getProductById(product._id);
+            if (checkId === null) return response.status(404).send({ message: `product id ${product._id} not found` });
+            if ('error' in checkId) {
+                return { error: checkId.error, _id: product._id }
+            }
+        }))
+        const check = results.find(value => value !== undefined)
+        if (check) return response.status(404).send(check)
 
-        const cart = carts[cid];
-        const existingProduct = cart.products.find(product => product.productId === pid);
+        const cart = await cm.addCart(products)
+        // console.log(cart);
 
-        if (existingProduct) {
-            existingProduct.quantity += quantity;
-        } else {
-            cart.products.push({ productId: pid, quantity });
-        }
+        response.status(200).send(cart);
 
-        fs.writeFileSync(filePath, JSON.stringify(carts, null, '\t'));
-
-        res.status(200).json(cart);
-    } catch (error) {
-        console.error("Error al procesar la solicitud:", error);
-        res.status(500).json({ error: error.message });
     }
-});
-
-
-routers.get('/:cid', async (req, res) => {
-    const { cid } = req.params;
-
-    try {
-        const data = await cartManagers.readCartData();
-
-        if (data[cid]) {
-            const cartContents = data[cid].products;
-            res.status(200).json(cartContents);
-        } else {
-            res.status(404).json({ error: 'El carrito no existe' });
-        }
-    } catch (error) {
-        console.error("Error al obtener el carrito:", error);
-        res.status(500).json({ error: error.message });
+    catch (err) {
+        console.log(err);
     }
-});
+})
+
+routerC.post('/:cid/product/:pid', async (request, response) => {
+    let { cid, pid } = request.params
+    const { quantity } = request.body
+
+
+    const checkIdProduct = await pm.getProductById(pid);
+    if ('error' in checkIdProduct) return response.status(404).send({ error: `The ID product: ${pid} not found` })
+
+    const checkIdCart = await cm.getCartById(cid)
+    if ('reason' in checkIdCart) return response.status(404).send({ error: `The ID cart: ${cid} not found` })
+
+    const result = await cm.addProductInCart(cid, { _id: pid, quantity })
+    console.log(result);
+    return response.status(200).send({ message: `added product ID: ${pid}, in cart ID: ${cid}`, cart: result });
+})
 
 
 
-export default routers
+
+
+export default routerC

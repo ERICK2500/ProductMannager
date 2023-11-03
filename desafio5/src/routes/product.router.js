@@ -1,129 +1,152 @@
 import { Router } from 'express';
-import ProductManager from '../dao/products/managers/ProductManager.js';
-import __dirname from '../utill.js';
-import path from 'path';
+// import ProductManager from '../dao/fileSystem/ProductManager.js';
+import ProductManager from '../dao/mongo/managers/products.js';
+const routerP = Router()
+
+const pm = new ProductManager()
 
 
-const router = Router();
-const filePath = path.resolve(
-    __dirname,
-    'dao',
-    'products',
-    'files',
-    'productos.json'
-);
 
-const productManagers = new ProductManager(filePath);
-
-router.get('/', async (req, res) => {
+//http://localhost:8080/api/products?limit=2
+routerP.get('/', async (request, response) => {
     try {
-        const { limit } = req.query;
-        const products = await productManagers.getProducts(limit);
+        //Limit recibido
+        let { limit } = request.query
 
-        if (req.headers.accept === 'application/json') {
+        // Productos 
+        const products = await pm.getProducts();
 
-            res.json({ products });
-        } else {
+        // Si no se pasa un limit devuelve todos los productos
+        if (!limit) return response.status(200).send({ products })
 
-            res.render('home', { products });
+        // parseo de limit
+        if (isNaN(Number(limit))) return response.status(400).send({ message: 'The limit is invalid' })
+        limit = Number(limit)
+
+        // "Si el limit es menor a cero se devuelve un error"
+        if (limit < 0) return response.status(400).send({ message: 'The limit cannot be less than 0' })
+        // Si el límite es menor a la cantidad de productos disponibles entra al condicional
+        if (products.length > limit) {
+            const limitProduct = products.slice(0, limit)
+            return response.status(200).send({ limit, products: limitProduct });
         }
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener los productos' });
+
+        // Caso de que el limit sea mayor a lo disponible
+        return response.status(200).send({ products });
+    } catch (err) {
+        console.log(err);
+    }
+
+
+})
+
+//http://localhost:8080/api/products/
+routerP.get('/:pid', async (request, response) => {
+    try {
+        const { pid } = request.params
+
+        // Se devuelve el resultado
+        const result = await pm.getProductById(pid)
+        console.log(result, 'resultado');
+        // En caso de que traiga por error en el ID de product
+        if (result.message) return response.status(404).send({ message: `ID: ${pid} not found` })
+
+        // Resultado
+        return response.status(200).send(result);
+
+    } catch (err) {
+        console.log(err);
+    }
+
+})
+
+//http://localhost:8080/api/products/
+routerP.post('/', async (request, response) => {
+    try {
+        const product = request.body
+        const {
+            title,
+            description,
+            price,
+            code,
+            stock,
+            status,
+            category,
+            thumbnails
+        } = product
+
+        const checkProduct = Object.values({
+            title,
+            description,
+            price,
+            code,
+            stock,
+            status,
+            category,
+            thumbnails
+        }).every(property => property)
+
+        if (!checkProduct) return response
+            .status(400)
+            .send({ message: "The product doesn't have all the properties" });
+
+        if (!(typeof title === 'string' &&
+            typeof description === 'string' &&
+            typeof price === 'number' &&
+            typeof code === 'string' &&
+            typeof stock === 'number' &&
+            typeof status === 'boolean' &&
+            typeof category === 'string' &&
+            Array.isArray(thumbnails)))
+            return response.status(400).send({ message: 'type of property is not valid' })
+
+        if (price < 0 || stock < 0) return response
+            .status(400)
+            .send({ message: 'Product and stock cannot be values less than or equal to zero' });
+
+        const result = await pm.addProduct(product)
+        console.log(result)
+        if (result.code === 11000) return response
+            .status(400)
+            .send({ message: `E11000 duplicate key error collection: ecommerce.products dup key code: ${result.keyValue.code}` });
+
+        return response.status(201).send(result);
+    }
+    catch (err) {
+        console.log(err);
+
     }
 })
 
-
-router.get('/:id', async (req, res) => {
+routerP.put('/:pid', async (request, response) => {
     try {
-        const { id } = req.params;
-        const product = await productManagers.getProductById(parseInt(id));
+        const { pid } = request.params
+        const product = request.body
 
-        if (product) {
-            res.render('realtimeproducts', { product });
-        } else {
-            res.render('realtimeproducts', { error: 'El producto no existe.' });
-        }
-    } catch (error) {
-        res.render('realtimeproducts', { error: `Error al obtener el producto: ${error.message}` });
+        const result = await pm.updateProduct(pid, product);
+        console.log(result);
+        if (result.message) return response.status(404).send({ message: `ID: ${pid} not found` })
+
+        return response.status(200).send(`The product ${result.title} whit ID: ${result._id} was updated`);
     }
-});
+    catch (err) {
+        console.log(err);
+    };
 
-router.post('/', async (req, res) => {
+})
+
+routerP.delete('/:pid', async (request, response) => {
     try {
-        const { title, description, code, price, stock, category, thumbnails } = req.body;
+        const { pid } = request.params
+        const result = await pm.deleteProduct(pid)
+        // console.log(result)
+        if (!result) return response.status(404).send({ message: `ID: ${pid} not found` })
 
+        return response.status(200).send({ message: `ID: ${pid} was deleted` });
 
-        // console.log('Datos recibidos en la solicitud:');
-        // console.log('Title:', title);
-        // console.log('Description:', description);
-        // console.log('Code:', code);
-        // console.log('Price:', price);
-        // console.log('Stock:', stock);
-        // console.log('Category:', category);
-        // console.log('Thumbnails:', thumbnails);
-
-        if (
-            typeof title !== 'string' ||
-            typeof description !== 'string' ||
-            typeof code !== 'string' ||
-            isNaN(price) ||
-            price <= 0 ||
-
-            typeof category !== 'string'
-        ) {
-            const invalidFields = [];
-
-            if (typeof title !== 'string') invalidFields.push('title');
-            if (typeof description !== 'string') invalidFields.push('description');
-            if (typeof code !== 'string') invalidFields.push('code');
-            if (isNaN(price) || price <= 0) invalidFields.push('price');
-            if (typeof stock !== 'number' || stock <= 0) invalidFields.push('stock');
-            if (typeof category !== 'string') invalidFields.push('category');
-            return res.status(400).json({ error: 'Los siguientes campos son obligatorios y/o no son válidos:', invalidFields });
-        }
-
-        const result = await productManagers.addProduct({
-            title,
-            description,
-            code: `ABC${code}`,
-            price,
-            stock,
-            category,
-            thumbnails: thumbnails ? [thumbnails] : ["Sin imagen"],
-            status: true,
-        });
-
-
-        return res.status(200).json({ result });
-    } catch (error) {
-        console.error("Error al procesar la solicitud:", error);
-        return res.status(500).json({ error: error.message });
+    } catch (err) {
+        console.log(err);
     }
-});
+})
 
-router.put('/:pid', async (req, res) => {
-    try {
-        const productId = Number(req.params.pid);
-        const updatedData = req.body;
-
-        const result = await productManagers.updateProduct(productId, updatedData);
-
-        res.status(200).json({ message: 'Producto Actualizado con éxito', data: result });
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
-
-router.delete('/:pid', async (req, res) => {
-    try {
-        const { pid } = req.params;
-
-        const result = await productManagers.deleteProduct(pid);
-
-        res.status(200).json({ message: 'Producto borrado con éxito', data: result });
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
-export default router
-
+export default routerP
