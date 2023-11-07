@@ -33,6 +33,7 @@ routerV.use('/realTimeProducts', (req, res) => {
     res.render('realTimeProducts', {})
 })
 
+
 routerV.get('/chat', async (req, res) => {
     res.render('chat');
 })

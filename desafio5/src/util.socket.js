@@ -30,7 +30,6 @@ export default function socketProducts(socketServer) {
                 console.log(err);
             }
 
-            
         })
 
         socket.on('delete', async data => {
@@ -39,7 +38,6 @@ export default function socketProducts(socketServer) {
 
             socket.emit('delete', result)
         })
-
 
     })
 }
