@@ -1,0 +1,51 @@
+{
+  "name": "desafio5",
+  "version": "1.0.3.2",
+  "description": "Entrega del quinto desafío del curso Backend en Coderhouse: Websockets + Handlebars",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "concurrently \"nodemon src/app.js\" \"npm run watch:css\"",
+    "watch:css": "sass --watch src/public/scss/style.scss:src/public/css/style.css",
+    "setup": "npm install socket.io && npm install express && npm install -g nodemon && npm install -g sass && npm install sweetalert2 && npm install concurrently --save-dev && npm install express-handlebars && npm install mongoose"
+  },
+  "keywords": [
+    "backend",
+    "coderhouse",
+    "preentrega",
+    "node.js",
+    "express",
+    "sass",
+    "comercio electrónico",
+    "tienda en línea",
+    "carrito de compras",
+    "productos",
+    "ventas",
+    "pasarela de pagos",
+    "Router",
+    "Multer",
+    "Websockets",
+    "MongoDB",
+    "Passport",
+    "Mailing",
+    "NEST js",
+    "Product Cloud"
+  ],
+  "author": "Nicolás Maximiliano Caminos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "mongodb": "^6.2.0",
+    "mongoose": "^8.0.0",
+    "mongoose-paginate-v2": "^1.7.4",
+    "sass": "^1.68.0",
+    "socket.io": "^4.7.2",
+    "sweetalert2": "^11.9.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^3.0.1"
+  }
+}
