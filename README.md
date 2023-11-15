@@ -19,12 +19,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 
 ## Folder Structure
 
-- 📁 **desafio1: Clases ECMAScript y ECMAScript avanzado**
-- 📁 **desafio2: Manejo de archivos**
-- 📁 **desafio3: Servidor con Express**
-- 📁 **Primera Preentrega: Router y Multer**
-- 📁 **desafio4: Websockets + Handlebars**
-- 📁 **desafio5: Primera práctica integradora**
+- 📁 **desafio6: Implementación de Login**
 
 ---
 
