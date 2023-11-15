@@ -2,11 +2,13 @@
     <nav class="d-flex justify-content-between">
         <div class="title d-flex ">
             <h1>Products</h1>
-            
+
         </div>
-        <div class="m-auto"><h2>Bienvenido: {{user.first_name}} ({{user.role}})</h2></div>
+        <div class="m-auto">
+            <h2>Bienvenido: {{user.first_name}} ({{user.role}})</h2>
+        </div>
         <div class="cart d-flex p-0 mt-2 gap-4 ">
-            
+
             <img src="./img/cart.svg" alt="cart" class="img-fluid">
 
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCart">
@@ -66,7 +68,7 @@
                         stock: {{this.stock}}
                     </li>
                     <li>
-                        thumbnail: <img src="{{this.thumbnails}}" alt="" width="120" height="80">
+                        thumbnail: <img src="assets/img/{{this.thumbnails}}" alt="" width="120" height="80">
                     </li>
                 </p>
                 <a class="btn btn-success text-lg product" id="{{this._id}}" data-value="{{this.stock}}">Agregar a
