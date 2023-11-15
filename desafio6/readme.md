@@ -175,7 +175,7 @@ Configurar nuestro proyecto para que trabaje con Handlebars y WebSocket.
 - Profesionalizar las consultas de productos con filtros, paginación y ordenamientos
 - Profesionalizar la gestión de carrito para implementar los últimos conceptos vistos.
 
-### Entrega 0.6: Primera Práctica Integradora
+### Entrega 0.7: Implementación de Login
 - Deberá contar con todas las vistas realizadas en el hands on lab, así también como las rutas de router para procesar el registro y el login. 
 - Una vez completado el login, realizar la redirección directamente a la vista de productos.
 - Agregar a la vista de productos un mensaje de bienvenida con los datos del usuario
