@@ -40,7 +40,7 @@ const btnEliminar = () => {
 const forEachProduct = (data) => {
     let productos = ''
     data.forEach(producto => {
-        productos += `<div class="card mb-3 mx-4 my-4" style="max-width: 20rem;">
+        productos += `<div class="card bg-secondary mb-3 mx-4 my-4" style="max-width: 20rem;">
                         <div class="card-header">code: ${producto.code}</div>
                         <div class="card-body">
                             <h4 class="card-title">${producto.title}</h4>
@@ -90,7 +90,7 @@ const productsByServer = ()=>{
 
 formulario.addEventListener('submit', (event) => {
     event.preventDefault()
-    console.log(event.target);
+    
     const product = Object.fromEntries(new FormData(event.target))
     product['status'] = new Boolean(product['status'])
     product['thumbnails'] = ['empty']

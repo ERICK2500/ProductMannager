@@ -3,10 +3,14 @@ import handlebars from 'express-handlebars';
 import { Server } from 'socket.io';
 import socketProducts from './listeners/socketProducts.js';
 import registerChatHandler from './listeners/chatHandlers.js';
+import session from 'express-session'
+import cookieParser from 'cookie-parser'
+import mongoStore from 'connect-mongo'
 
 import routerP from './routers/products.router.js';
 import routerC from './routers/carts.router.js';
 import routerV from './routers/views.router.js';
+import routerS from './routers/session.router.js';
 
 import __dirname from './utils.js';
 import connectToDB from './config/configServer.js';
@@ -23,17 +27,33 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'handlebars');
 
 
+connectToDB()
+
+app.use(session({
+    store: mongoStore.create({
+        ttl:3600,
+        mongoUrl:'mongodb+srv://nicoasis7:wlJ6fKMqSrbdpMc7@cluster0.2yrsmeq.mongodb.net/?retryWrites=true&w=majority',
+        mongoOptions: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        }
+    }),
+    secret: 'secretCoder',
+    resave: false,
+    saveUninitialized: false
+}))
+
+app.use('/api/session', routerS)
 app.use('/api/products', routerP)
 app.use('/api/carts', routerC)
 app.use('/', routerV);
 
-connectToDB()
 
 const httpServer = app.listen(PORT, () => {
     try {
         console.log(`Listening to the port ${PORT}\nAcceder a:`);
         console.log(`\t1). http://localhost:${PORT}/products`)
-        console.log(`\t2). http://localhost:${PORT}/carts/654d3bc38051cd96c5cdae2b`);
+        console.log(`\t2). http://localhost:${PORT}/carts/646df484d31949d4081c72eb`);
     }
     catch (err) {
         console.log(err);
