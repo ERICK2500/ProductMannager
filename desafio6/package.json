@@ -1,7 +1,7 @@
 {
-  "name": "desafio5",
-  "version": "1.0.3.2",
-  "description": "Entrega del quinto desafío del curso Backend en Coderhouse: Websockets + Handlebars",
+  "name": "desafio6",
+  "version": "1.0.3.3",
+  "description": "Entrega del sexto desafío del curso Backend en Coderhouse:Implementación de login",
   "main": "src/app.js",
   "type": "module",
   "scripts": {
