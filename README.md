@@ -19,7 +19,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 
 ## Folder Structure
 
-- 📁 **desafio7: Implementación de Login**
+- 📁 **desafio7: Refactor a nuestro login**
 
 ---
 
