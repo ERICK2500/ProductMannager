@@ -25,6 +25,9 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 - 📁 **Primera Preentrega: Router y Multer**
 - 📁 **desafio4: Websockets + Handlebars**
 - 📁 **desafio5: Primera práctica integradora**
+- 📁 **segundaPreentrega: Mongo Avanzado (Parte II)**
+- 📁 **desafio6: Implementación de login**
+- 📁 **desafio7: Refactor a nuestro login**
 
 ---
 
