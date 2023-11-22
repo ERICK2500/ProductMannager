@@ -43,15 +43,8 @@ Para instalar los paquetes usados en el proyecto, puede utilizar los siguientes 
 
 ```bash
 $ git clone NicolasCaminos/ProductMannager.git
-$ npm install
-$ npm init -y
-$ npm install express
-$ npm install -g nodemon
-$ npm install -g sass
-$ npm install sweetalert2
-$ npm install express express-handlebars
-$ npm install socket.io
-$ npm run dev
+$ npm run setup
+$ npm run dev 
 $ npm run start
 
 ```
