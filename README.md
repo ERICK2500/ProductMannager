@@ -43,7 +43,7 @@ Para instalar los paquetes usados en el proyecto, puede utilizar los siguientes 
 
 ```bash
 $ git clone NicolasCaminos/ProductMannager.git
-$ npm run setup
+$ npm run i 
 $ npm run dev 
 $ npm run start
 
