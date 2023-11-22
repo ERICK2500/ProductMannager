@@ -112,6 +112,14 @@ Configurar nuestro proyecto para que trabaje con Handlebars y WebSocket.
 
 ### Entrega 0.6: Primera Práctica Integradora
 
+- Deberá contar con todas las vistas realizadas en el hands on lab, así también como las rutas de router para procesar el registro y el login. 
+- Una vez completado el login, realizar la redirección directamente a la vista de productos.
+- Agregar a la vista de productos un mensaje de bienvenida con los datos del usuario
+
+- Agregar un sistema de roles, de manera que si colocamos en el login como correo adminCoder@coder.com, y la contraseña adminCod3r123, el usuario de la sesión además tenga un campo 
+- Todos los usuarios que no sean admin deberán contar con un rol “usuario”.
+Implementar botón de “logout” para destruir la sesión y redirigir a la vista de login
+
 ### Entrega 0.7: Refactor a nuestro login
 
 - Al cargar el proyecto, éste deberá comenzar en la pantalla de login.
@@ -174,6 +182,7 @@ Configurar nuestro proyecto para que trabaje con Handlebars y WebSocket.
 - Saber hacer un CRUD con Mongoose en Node.js.
 
 ### Segunda Preentrega: Mongoo Avanzado
+
 #### Objetivos generales
 
 - Contarás con Mongo como sistema de persistencia principal
@@ -183,15 +192,6 @@ Configurar nuestro proyecto para que trabaje con Handlebars y WebSocket.
 
 - Profesionalizar las consultas de productos con filtros, paginación y ordenamientos
 - Profesionalizar la gestión de carrito para implementar los últimos conceptos vistos.
-
-### Entrega 0.6: Primera Práctica Integradora
-- Deberá contar con todas las vistas realizadas en el hands on lab, así también como las rutas de router para procesar el registro y el login. 
-- Una vez completado el login, realizar la redirección directamente a la vista de productos.
-- Agregar a la vista de productos un mensaje de bienvenida con los datos del usuario
-
-- Agregar un sistema de roles, de manera que si colocamos en el login como correo adminCoder@coder.com, y la contraseña adminCod3r123, el usuario de la sesión además tenga un campo 
-- Todos los usuarios que no sean admin deberán contar con un rol “usuario”.
-Implementar botón de “logout” para destruir la sesión y redirigir a la vista de login
 
 ## Technologies
 
