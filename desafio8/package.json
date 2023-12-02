@@ -1,16 +1,38 @@
 {
-  "name": "entregableClase24",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "name": "desafio6",
+  "version": "1.0.3.3",
+  "description": "Entrega del sexto desafío del curso Backend en Coderhouse:Implementación de login",
+  "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "start": "node src/app.js",
+    "dev": "concurrently \"nodemon src/app.js\" \"npm run watch:css\"",
+    "watch:css": "sass --watch src/public/scss/style.scss:src/public/css/style.css",
+    "setup": "npm install socket.io && npm install express && npm install -g nodemon && npm install -g sass && npm install sweetalert2 && npm install concurrently --save-dev && npm install express-handlebars && npm install mongoose"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "backend",
+    "coderhouse",
+    "preentrega",
+    "node.js",
+    "express",
+    "sass",
+    "comercio electrónico",
+    "tienda en línea",
+    "carrito de compras",
+    "productos",
+    "ventas",
+    "pasarela de pagos",
+    "Router",
+    "Multer",
+    "Websockets",
+    "MongoDB",
+    "Passport",
+    "Mailing",
+    "NEST js",
+    "Product Cloud"
+  ],
+  "author": "Nicolás Maximiliano Caminos",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -30,5 +52,9 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^3.0.1"
   }
 }
