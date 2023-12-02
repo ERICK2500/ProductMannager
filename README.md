@@ -28,7 +28,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 - 📁 **segundaPreentrega: Mongo Avanzado (Parte II)**
 - 📁 **desafio6: Implementación de login**
 - 📁 **desafio7: Refactor a nuestro login**
-
+- 📁 **desafio8: Segunda práctica Integradora**
 ---
 
 ## Technologies
