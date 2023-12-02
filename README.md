@@ -18,6 +18,7 @@ Este sitio nació con la idea de hacer una tienda Ecommerce para productos.
 Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se aloja el proyecto final) y en la rama `V.01` donde se trabajan las updates y fixes.
 
 ## Folder Structure
+
 - 📁 **desafio8: Segunda práctica Integradora**
 
 ---

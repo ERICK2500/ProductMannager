@@ -1,7 +1,7 @@
 {
-  "name": "desafio6",
+  "name": "Segunda_Practica_Integradora",
   "version": "1.0.3.3",
-  "description": "Entrega del sexto desafío del curso Backend en Coderhouse:Implementación de login",
+  "description": "Entrega del segunda práctica intregadora del curso Backend en Coderhouse:Implementación de login",
   "main": "src/app.js",
   "type": "module",
   "scripts": {
