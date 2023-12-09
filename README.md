@@ -19,7 +19,8 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 
 ## Folder Structure
 
-- 📁 **desafio8: Segunda práctica Integradora**
+
+- 📁 **desafio9: Reestructura de nuestro servidor**
 
 ---
 
