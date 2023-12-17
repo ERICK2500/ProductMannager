@@ -1,14 +1,14 @@
 {
-  "name": "desafio6",
+  "name": "desafio9",
   "version": "1.0.3.3",
-  "description": "Entrega del sexto desafío del curso Backend en Coderhouse:Implementación de login",
+  "description": "Entrega del noveno desafío del curso Backend en Coderhouse:Reestructura de nuestro servidor",
   "main": "src/app.js",
   "type": "module",
   "scripts": {
     "start": "node src/app.js",
     "dev": "concurrently \"nodemon src/app.js\" \"npm run watch:css\"",
     "watch:css": "sass --watch src/public/scss/style.scss:src/public/css/style.css",
-    "setup": "npm install socket.io && npm install express && npm install -g nodemon && npm install -g sass && npm install sweetalert2 && npm install concurrently --save-dev && npm install express-handlebars && npm install mongoose"
+    "setup": "npm install bcrypt connect-mongo cookie-parser dotenv express express-handlebars express-session http-proxy-middleware jsonwebtoken mongoose mongoose-paginate-v2 nodemon passport passport-github2 passport-jwt passport-local socket.io sweetalert2 concurrently --save"
   },
   "keywords": [
     "backend",
