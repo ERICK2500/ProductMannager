@@ -19,17 +19,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 
 ## Folder Structure
 
-- 📁 **desafio1: ECMAScript y ECMAScript avanzado**
-- 📁 **desafio2: Manejo de archivos**
-- 📁 **desafio3: Servidor con Express**
-- 📁 **desafio4: Websockets + Handlebars**
-- 📁 **desafio5: Práctica de integración sobre tu ecommerce**
-- 📁 **desafio6: Implementación de login**
-- 📁 **desafio7: Refactor a nuestro login**
-- 📁 **desafio8: Práctica de integración sobre tu ecommerce**
-- 📁 **desafio9: Reestructura de nuestro servidor**
-- 📁 **Primera Preentrega: Router y Multer**
-- 📁 **Segunda Preentrega: Mongo Avanzado**
+
 - 📁 **Tercer Preentrega: Reestructura de nuestro servidor**
 
 ---
@@ -48,17 +38,54 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 
 ---
 
+
 ## Installation
 
 Para instalar los paquetes usados en el proyecto, puede utilizar los siguientes comandos:
 
+### 1. Clonar el Repositorio
+
 ```bash
-$ git clone NicolasCaminos/ProductMannager.git
-$ npm run i 
-$ npm run dev 
-$ npm run start
+
+git clone NicolasCaminos/ProductMannager.git
 
 ```
+
+### 2. Configurar el entorno
+
+```bash
+cd Infinity
+# Install project dependencies and tools
+npm run setup
+# or
+npm i
+
+```
+
+### 3. Iniciar la aplicación
+
+Elige uno de esos métodos para iniciar la aplicación:
+
+- Method 1: Usando npm (for development)
+
+Para iniciar la aplicación en modo de desarrollo, ejecuta el siguiente comando. El mismo también ejecuta el comando Sass para los estilos.
+
+```bash
+
+ npm run dev
+
+```
+
+
+- Method 2: Usando también npm (for development or production)
+
+Este comando permite iniciar la aplicación en un entorno de producción.
+
+```bash
+
+npm run start
+```
+
 
 ## Collaboration
 
