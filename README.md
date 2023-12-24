@@ -19,8 +19,18 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 
 ## Folder Structure
 
-
+- 📁 **desafio1: ECMAScript y ECMAScript avanzado**
+- 📁 **desafio2: Manejo de archivos**
+- 📁 **desafio3: Servidor con Express**
+- 📁 **desafio4: Websockets + Handlebars**
+- 📁 **desafio5: Práctica de integración sobre tu ecommerce**
+- 📁 **desafio6: Implementación de login**
+- 📁 **desafio7: Refactor a nuestro login**
+- 📁 **desafio8: Práctica de integración sobre tu ecommerce**
 - 📁 **desafio9: Reestructura de nuestro servidor**
+- 📁 **Primera Preentrega: Router y Multer**
+- 📁 **Segunda Preentrega: Mongo Avanzado**
+- 📁 **Tercer Preentrega: Reestructura de nuestro servidor**
 
 ---
 
