@@ -30,7 +30,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 - 📁 **desafio9: Reestructura de nuestro servidor**
 - 📁 **Primera Preentrega: Router y Multer**
 - 📁 **Segunda Preentrega: Mongo Avanzado**
-- 📁 **Tercer Preentrega: Reestructura de nuestro servidor**
+- 📁 **Tercer Preentrega: Reestructurando de nuestro servidor**
 
 ---
 

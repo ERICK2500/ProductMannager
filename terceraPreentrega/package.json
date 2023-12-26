@@ -1,16 +1,38 @@
 {
-  "name": "tercerPreEntregaFinal",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "name": "Tercera Preentrega",
+  "version": "1.0.3.2",
+  "description": "Tercer preentrega del curso Backend en Coderhouse: eestructurando de nuestro servidor ",
+  "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js"
+    "start": "node src/app.js",
+    "dev": "concurrently \"nodemon src/app.js\" \"npm run watch:css\"",
+    "watch:css": "sass --watch src/public/scss/style.scss:src/public/css/style.css",
+    "setup": "npm install socket.io && npm install express && npm install -g nodemon && npm install -g sass && npm install sweetalert2 && npm install concurrently --save-dev && npm install express-handlebars && npm install mongoose"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "backend",
+    "coderhouse",
+    "preentrega",
+    "node.js",
+    "express",
+    "sass",
+    "comercio electrónico",
+    "tienda en línea",
+    "carrito de compras",
+    "productos",
+    "ventas",
+    "pasarela de pagos",
+    "Router",
+    "Multer",
+    "Websockets",
+    "MongoDB",
+    "Passport",
+    "Mailing",
+    "NEST js",
+    "Product Cloud"
+  ],
+  "author": "Nicolás Maximiliano Caminos",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -18,11 +40,11 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "express-handlebars": "^7.0.7",
+    "express-handlebars": "^7.1.2",
     "express-session": "^1.17.3",
     "http-proxy-middleware": "^2.0.6",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.1.1",
+    "mongoose": "^7.6.7",
     "mongoose-paginate-v2": "^1.7.1",
     "nodemailer": "^6.9.4",
     "nodemon": "^2.0.22",
@@ -30,6 +52,10 @@
     "passport-github2": "^0.1.12",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "socket.io": "^4.6.1"
+    "socket.io": "^4.7.2",
+    "sweetalert2": "^11.10.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
