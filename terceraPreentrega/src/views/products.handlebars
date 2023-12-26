@@ -34,7 +34,7 @@
 
     <div class="row mt-4">
         {{#each products }}
-        <div class="card bg-secondary mb-3 mx-4 my-4" style="max-width: 20rem;">
+        <div class="card mb-3 mx-4 my-4" style="max-width: 20rem;">
             <div class="card-header">code: {{this.code}}</div>
             <div class="card-body">
                 <h4 class="card-title">{{this.title}}</h4>
@@ -55,7 +55,7 @@
                         stock: {{this.stock}}
                     </li>
                     <li>
-                        thumbnail: <img src="{{this.thumbnails}}" alt="" width="120" height="80">
+                        thumbnail: <img src="assets/img/{{this.thumbnails}}" alt="" width="120" height="80">
                     </li>
                 </p>
                 <a class="btn btn-success text-lg product" id="{{this._id}}" data-value="{{this.stock}}">Agregar a
@@ -66,7 +66,7 @@
 
         {{/each}}
     </div>
-
+    
     <div class="container d-flex justify-content-center align-items-center gap-4 p-4">
 
 
