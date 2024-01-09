@@ -1,7 +1,7 @@
 {
-  "name": "Tercera Preentrega",
+  "name": "desafio10",
   "version": "1.0.3.2",
-  "description": "Tercer preentrega del curso Backend en Coderhouse: eestructurando de nuestro servidor ",
+  "description": "Desafio 10 del curso Backend en Coderhouse: Mocking y manejo de errores ",
   "main": "src/app.js",
   "type": "module",
   "scripts": {
