@@ -29,6 +29,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 - 📁 **desafio8: Práctica de integración sobre tu ecommerce**
 - 📁 **desafio9: Reestructura de nuestro servidor**
 - 📁 **desafio10: Mocking y manejo de errores**
+- 📁 **desafio11: Implementación de logger**
 - 📁 **Primera Preentrega: Router y Multer**
 - 📁 **Segunda Preentrega: Mongo Avanzado**
 - 📁 **Tercer Preentrega: Reestructurando de nuestro servidor**

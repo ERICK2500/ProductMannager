@@ -1,7 +1,7 @@
 {
-  "name": "desafio10",
+  "name": "desafio11",
   "version": "1.0.3.2",
-  "description": "Desafio 10 del curso Backend en Coderhouse: Mocking y manejo de errores ",
+  "description": "Desafio 11 del curso Backend en Coderhouse: Implementación de logger ",
   "main": "src/app.js",
   "type": "module",
   "scripts": {
