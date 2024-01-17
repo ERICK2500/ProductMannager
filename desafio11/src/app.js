@@ -22,7 +22,19 @@ const PORT = config.port || 8080;
 const URL = config.url || 'http://localhost:';
 
 // Configuración de encabezados de seguridad con Helmet
-app.use(helmet());
+app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", "'unsafe-inline'", 'https://ajax.googleapis.com', 'https://cdn.jsdelivr.net'],
+          styleSrc: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net'],
+          fontSrc: ["'self'", 'https://cdn.jsdelivr.net'],
+          imgSrc: ["'self'", 'data:', 'https://oasisinet.com', 'https://cdn.jsdelivr.net'],
+        },
+      },
+    })
+  );
 
 app.use(attachLogger);
 app.use(express.static(`${__dirname}/public`));

@@ -1,14 +1,18 @@
 const loginForm = document.getElementById('loginForm');
 const registerBtn = document.getElementById('register');
 
-registerBtn.addEventListener('click', () => {
-    window.location.replace('/register')
-})
+
 
 loginForm.addEventListener('submit', event => {
     event.preventDefault();
 
+    const actions = {
+        'user': () => window.location.replace('/products'),
+        'ADMIN': () => window.location.replace('/admin'), 
+    };
+
     const user = Object.fromEntries(new FormData(event.target))
+
     try {
         fetch('/api/session/login', {
             method: 'POST',
@@ -19,24 +23,31 @@ loginForm.addEventListener('submit', event => {
         })
             .then(response => response.json())
             .then(data => {
-
-                if (data.status === 'error') {
-                    alert(data.message)
+                
+                const action = actions[data.user.userRole];
+                
+                if (action) {
+                    action();
+                } else {
+                    Swal.fire({
+                        title: 'Login failed, please check your username and password',
+                        icon: 'warning'
+                    });
                 }
-                else {
-                    alert(data.message)
-                    window.location.replace('/products')
-                }
-
-            }).catch(
-                error => alert(error));
+            });
 
     } catch (error) {
-        fetch('/api/session/loginFail')
-            .then(response => response.json())
-            .then(data => console.log('Error: ', data))
-            .catch(error => console.log('Error Message: ', error));
+
+        console.log(error);
+
     }
 
 
+})
+
+
+
+
+registerBtn.addEventListener('click', () => {
+    window.location.replace('/register')
 })

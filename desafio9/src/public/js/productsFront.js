@@ -1,61 +1,33 @@
 const products = document.getElementsByClassName('product');
-const btnCartFinal = document.getElementById('cartFinal')
-const modalBody = document.getElementById('modalBody')
-const btnLogout = document.getElementById('logout')
-;
-btnLogout.addEventListener('click', () => {
-    Swal.fire({
-        title: 'Do you want to close the session?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#73be73',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes!'
-    }).then(response => {
-        if (response.isConfirmed) {
-            fetch('http://localhost:8080/api/session/logout', {
-                method: 'POST' 
-            })
-            .then(() => {
-                localStorage.removeItem('authToken');
-                window.location.replace('/login');
-            })
-            .catch(error => {
-                console.error('Logout failed:', error);
-                Swal.fire({
-                    title: 'Logout failed',
-                    icon: 'error'
-                });
-            });
-        } else {
-            Swal.fire({
-                title: 'The session has not been closed',
-                icon: 'info'
-            });
-        }
-    });
-});
+const btnCartFinal = document.getElementById('cartFinal');
+const modalBody = document.getElementById('modalBody');
+const modalFooter = document.getElementById('modalFooter');
+
 
 const arrayProducts = Array.from(products);
 
+
 const productsInCart = () => {
-    fetch('http://localhost:8080/products/inCart')
+    fetch('/products/inCart')
         .then(response => response.json())
         .then(data => {
-
+            
             if (data.cartLength > 0) {
                 let products = ''
+                let total = 0
                 data.productsInCart.forEach((product, key) => {
-                    products += `<h6>${key + 1}) ${product.title} : ${product.quantity}<h6>`
+                    products += `<h6>${key + 1}) ${product._id.title} : ${product.quantity}<h6>`
+                    total += product.quantity * product._id.price;
                 })
 
                 modalBody.innerHTML = products
+                modalFooter.innerHTML = `<h5>Total: $${Math.round(total * 100) / 100}</h5>`
             }
-
             else {
                 modalBody.innerHTML = `<h3> Empty cart </h3>`
             }
-        });
+        })
+        .catch(err => console.log(err));
 
 }
 
@@ -73,7 +45,7 @@ arrayProducts.forEach(product => {
             confirmButtonText: 'Confirm',
         }).then(response => {
 
-            if (stock > Number(response.value) && Number(response.value) > 0) {
+            if (stock >= Number(response.value) && Number(response.value) > 0) {
                 Swal.fire({
                     title: 'Product added successfully',
                     text: `ID: ${product.id} - Quantity: ${response.value}`,
@@ -86,9 +58,9 @@ arrayProducts.forEach(product => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ product: { _id: product.id, quantity: Number(response.value) } }),
-                })
+                }).then(() =>productsInCart())
 
-                productsInCart()
+                
 
             }
             else if (Number(response.value) < 0) {
@@ -119,25 +91,12 @@ btnCartFinal.addEventListener('click', () => {
         confirmButtonText: 'Yes!'
     }).then(response => {
         if (response.isConfirmed) {
-            fetch('http://localhost:8080/products/inCart')
+            fetch('api/carts/usercarts')
                 .then(response => response.json())
-                .then(data => {
-                    if (data.cartLength > 0) {
-                        fetch('http://localhost:8080/products', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({ finishBuy: true }),
-                        }).then(
-                            Swal.fire({
-                                title: 'Completed purchase!',
-                                icon: 'success'
-                            }
-                            )
-                        ).then(
-                            modalBody.innerHTML = `<h3> Empty cart </h3>`
-                        )
+                .then(data => {                    
+                    
+                    if (data.payload.products.length > 0) {
+                        window.location.href = '/ticket'
                     }
                     else {
                         Swal.fire({
@@ -147,6 +106,9 @@ btnCartFinal.addEventListener('click', () => {
                         })
                     }
                 })
+                .then(() =>productsInCart())
+                .catch(error => console.log(error))
+
         }
         else {
             Swal.fire({
@@ -162,3 +124,6 @@ btnCartFinal.addEventListener('click', () => {
 
 
 productsInCart()
+
+
+
