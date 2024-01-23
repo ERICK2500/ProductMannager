@@ -5,6 +5,42 @@
         ADMIN
     </h1>
 
+    {{#if dollar}}
+    <div class="container">{{dollar.of}} - {{dollar.imp1}} - {{dollar.imp2}}</div>
+    <table class="table table-bordered table-striped cotizaciones-ar" id="CompraVenta">
+        <thead class="thead-light text-center">
+            <tr>
+                <th class=""></th>
+                <th class="">Compra</th>
+                <th class="">Venta</th>
+                <th class="">+30%</th>
+                <th class="">+30% +45%</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="text-center">
+                <td class="">
+                    <span class="h4 mx-5 text-danger">Dólar bancos y casas de cambio</span>
+                </td>
+                <td class="">
+                    $ {{dollar.compra}}
+                </td>
+                <td class="">
+                    $ {{dollar.venta}}
+                </td>
+                <td class="">
+                    $ {{dollar.imp1}}
+                </td>
+                <td class="">
+                    $ {{dollar.imp2}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{/if}}
+
     <div class="d-flex justify-content-center gap-5">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
             New product

@@ -4,6 +4,10 @@ import productsController from '../controllers/products.controller.js';
 
 
 export default class ProductsRouter extends BaseRouter {
+    constructor() {
+        super();
+        this.router.use(bodyParser.json()); // Configura body-parser aquí
+    }
     //http://localhost:8080/api/products?limit=2
     init() {
         this.get('/', ['AUTH', 'ADMIN'], passportCall('jwt', {strategyType: 'jwt'}), passportCall('jwt', { strategyType: 'github' }), productsController.getProducts)
@@ -14,7 +18,7 @@ export default class ProductsRouter extends BaseRouter {
         this.get('/:pid', ['ADMIN'], passportCall('jwt', {strategyType: 'jwt'}), productsController.getProductId)
 
         //http://localhost:8080/api/products/
-        this.post('/', ['ADMIN'], passportCall('jwt', {strategyType: 'jwt'}), productsController.postProduct)
+        this.post('/', ['ADMIN'], passportCall('jwt', {strategyType: 'jwt'}), productsController.postProduct);
 
         this.put('/:pid', ['ADMIN'], passportCall('jwt', {strategyType: 'jwt'}), productsController.putProduct)
 

@@ -54,13 +54,15 @@ export default class ProductManager {
 
     addProduct = async (product) => {
         try {
+            console.log('Product to be added:', product);
             await productModel.create(product);
-            return await productModel.findOne({ code: product.code })
+            const addedProduct = await productModel.findOne({ code: product.code });
+            console.log('Product added successfully:', addedProduct);
+            return addedProduct;
+        } catch (err) {
+            console.error('Error adding product:', err);
+            return err;
         }
-        catch (err) {
-            return err
-        }
-
     }
 
     updateProduct = async (id, product) => {

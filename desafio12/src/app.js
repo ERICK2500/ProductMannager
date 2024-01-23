@@ -3,7 +3,7 @@ import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser'
 
 import { initializePassport } from './config/passport.config.js';
-import helmet from 'helmet'; 
+
 import { __dirname } from './utils.js';
 import connectToDB from './config/configServer.js';
 import SessionsRouter from './routers/Sessions.router.js';
@@ -18,6 +18,8 @@ import { notFoundMiddleware } from './middleware/notfound.js';
 import errorHandler from './middleware/errors/index.js';
 import {attachLogger, getLogger} from './middleware/logger.js';
 
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express'
 
 const logger = getLogger()
 
@@ -43,27 +45,28 @@ app.set('view engine', 'handlebars');
 connectToDB();
 initializePassport();
 
+
+// SWAGGER
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info:{
+            title:'Supermarket BBS',
+            description: 'Documentation API'
+        }
+    },
+    apis: [`${__dirname}/docs/**/*.yaml`]
+}
+
+const specs = swaggerJSDoc(swaggerOptions)
+app.use('/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
+
 const ticketRouter = new TicketRouter();
 const sessionsRouter = new SessionsRouter();
 const productsRouter = new ProductsRouter();
 const cartsRouter = new CartsRouter();
 const viewsRouter = new ViewsRouter();
 const usersRouter = new UserRouter();
-
-// Configuración de encabezados de seguridad con Helmet
-app.use(
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-inline'", 'https://ajax.googleapis.com', 'https://cdn.jsdelivr.net'],
-          styleSrc: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net'],
-          fontSrc: ["'self'", 'https://cdn.jsdelivr.net'],
-          imgSrc: ["'self'", 'data:', 'https://oasisinet.com', 'https://cdn.jsdelivr.net'],
-        },
-      },
-    })
-  );
 
 app.get('/logger', (req, res) => {
 
