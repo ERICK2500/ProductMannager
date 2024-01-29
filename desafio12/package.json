@@ -7,8 +7,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "concurrently \"nodemon src/app.js\" \"npm run watch:css\"",
-    "watch:css": "sass --watch src/public/scss/style.scss:src/public/css/style.css",
-    "setup": "npm install socket.io && npm install express && npm install -g nodemon && npm install -g sass && npm install sweetalert2 && npm install concurrently --save-dev && npm install express-handlebars && npm install mongoose"
+    "watch:css": "sass --watch src/public/scss/style.scss:src/public/css/style.css"
   },
   "keywords": [
     "backend",
