@@ -1,7 +1,7 @@
 {
   "name": "desafio12",
   "version": "1.0.3.2",
-  "description": "Tercera práctica integradora del curso Backend en Coderhouse: Práctica de integración sobre tu ecommerce",
+  "description": "Desafio 12 del curso Backend en Coderhouse: Práctica de integración sobre tu ecommerce",
   "main": "src/app.js",
   "type": "module",
   "scripts": {
