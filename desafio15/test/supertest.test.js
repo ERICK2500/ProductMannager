@@ -1,35 +1,40 @@
 import { expect } from 'chai';
 import supertest from 'supertest';
 
+
 const request = supertest('http://localhost:8080');
 
+
 describe('API Endpoints - Session Operations', function () {
+
+
+    // SESSIONS ****************************************************************
+
     let sessionCookie;
     let cartID;
-
     it('Debe registrar un nuevo usuario', async function () {
         const newUser = {
             first_name: "Test",
-            last_name: "nicolas",
-            email: "nicolasTestM@test.com",
+            last_name: "Luis",
+            email: "luisTestM@test.com",
             age: 30,
             role: "premium",
             password: "testPassword123"
         };
-    
+
         const registerResponse = await request.post('/api/session/register').send(newUser);
-    
-        console.log('Register Response:', registerResponse.body); // Agrega este log
+
         expect(registerResponse.status).to.be.eql(201);
+
     });
 
     it('Debe loguearse con email y password', async function () {
         const userTest = {
-            email: "nicolasTestM@test.com",
+            email: "luisTestM@test.com",
             password: "testPassword123"
-        };
-
+        }
         const loginResponse = await request.post('/api/session/login').send(userTest);
+
 
         sessionCookie = loginResponse.headers['set-cookie'][0].split(';')[0];
         const cookieName = sessionCookie.split('=')[0];
@@ -38,16 +43,19 @@ describe('API Endpoints - Session Operations', function () {
         expect(loginResponse.status).to.be.eql(200);
         expect(cookieName).to.be.eql('authToken');
         expect(cookieValue).to.be.ok;
+
     });
 
-    it('Debe comprobar la sesión del usuario', async function () {
+    it('Debe comprobar la sesion del usuario', async function () {
         const checkSessionResponse = await request.get('/api/session/current').set('Cookie', sessionCookie);
 
         expect(checkSessionResponse.status).to.be.eql(200);
-        expect(checkSessionResponse.body.payload).to.have.property('id');
-        expect(checkSessionResponse.body.payload).not.to.have.property('password');
-        cartID = checkSessionResponse.body.payload.cart;
+        expect(checkSessionResponse._body.payload).to.have.property('id');
+        expect(checkSessionResponse._body.payload).not.to.have.property('password');
+        cartID = checkSessionResponse._body.payload.cart
+
     });
+
     // PRODUCT ****************************************************************
 
     let createdProductID;

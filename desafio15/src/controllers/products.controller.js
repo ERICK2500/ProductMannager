@@ -109,16 +109,18 @@ const getProductId = async (req, res) => {
 }
 
 const postProduct = async (req, res) => {
+
     try {
-        let product = req.body;
+        let product = req.body
+
 
         product.owner = (req.user.role !== 'premium') ? 'admin' : req.user.email;
         if (req.files) {
             product.thumbnails = req.files.map(file => file.path);
         }
-
-        product.price = Number(product.price[0]);
-        product.stock = Number(product.stock[0]);
+        
+        product.price = Number(product.price[0])
+        product.stock = Number(product.stock[0])
         product.status = (product.status[0] === 'on') ? true : false;
 
         const {
@@ -131,9 +133,8 @@ const postProduct = async (req, res) => {
             category,
             thumbnails,
             owner,
-        } = product;
+        } = product
 
-        // Sugerencia 1: Manejo de errores más detallado
         if (!title ||
             !description ||
             !price ||
@@ -143,12 +144,28 @@ const postProduct = async (req, res) => {
             !category ||
             !thumbnails ||
             !owner) {
-            return res.status(400).send({
-                status: 'error',
-                message: 'Product creation failed',
-                error: 'Invalid product properties'
-            });
+
+            CustomError.createError({
+                name: 'Product creation failed',
+                cause: generateProductErrorInfo(
+                    {
+                        title,
+                        description,
+                        price,
+                        code,
+                        stock,
+                        status,
+                        category,
+                        thumbnails,
+                        owner,
+                    }
+                ),
+                message: "Error trying to create product",
+                code: EErrors.INVALID_TYPES_ERROR
+            })
+
         }
+
 
         if (!(typeof title === 'string' &&
             typeof description === 'string' &&
@@ -158,49 +175,29 @@ const postProduct = async (req, res) => {
             typeof status === 'boolean' &&
             typeof category === 'string' &&
             typeof owner === 'string' &&
-            Array.isArray(thumbnails))) {
-            return res.status(400).send({
-                status: 'error',
-                message: 'Product creation failed',
-                error: 'Invalid type of property'
-            });
-        }
+            Array.isArray(thumbnails)))
+            return res.status(400).send({ message: 'type of property is not valid' })
 
-        // Sugerencia 2: Asegúrate de verificar la existencia del producto antes de acceder a sus propiedades
-        const result = await productService.addProductService(product);
+        // if (price < 0 || stock < 0) return res
+        //     .status(400)
+        //     .send({ message: 'Product and stock cannot be values less than or equal to zero' });
 
-        // Sugerencia 3: Asegúrate de que el servicio addProductService devuelva la información del producto creado
-        if (!result || !result._id) {
-            return res.status(500).send({
-                status: 'error',
-                message: 'Error trying to create product',
-                error: 'Product information not available'
-            });
-        }
+        const result = await productService.addProductService(product)
 
-        if (result.code === 11000) {
-            return res.status(400).send({
-                status: 'error',
-                message: `E11000 duplicate key error collection: ecommerce.products dup key code: ${result.keyValue.code}`
-            });
-        }
-
-        req.logger.debug('POST product OK');
+        if (result.code === 11000) return res
+            .status(400)
+            .send({ message: `E11000 duplicate key error collection: ecommerce.products dup key code: ${result.keyValue.code}` });
+        req.logger.debug('POST product OK')
         return res.status(201).send(result);
 
-    } catch (error) {
-        // Sugerencia 4: Manejo de errores más detallado
-        req.logger.error(error);
-
-        return res.status(500).send({
-            status: 'error',
-            message: 'Error trying to create product',
-            error: error.message 
-        });
     }
-};
+    catch (error) {
+        
+        req.logger.error(error)
+        return res.send(error);
 
-
+    }
+}
 
 const putProduct = async (req, res) => {
     try {
