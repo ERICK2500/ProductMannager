@@ -23,17 +23,21 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 - 📁 **desafio2: Manejo de archivos**
 - 📁 **desafio3: Servidor con Express**
 - 📁 **desafio4: Websockets + Handlebars**
-- 📁 **desafio5: Práctica de integración sobre tu ecommerce**
+- 📁 **desafio5: Primera Práctica Integradora: Práctica de integración sobre tu ecommerce**
 - 📁 **desafio6: Implementación de login**
 - 📁 **desafio7: Refactor a nuestro login**
-- 📁 **desafio8: Práctica de integración sobre tu ecommerce**
+- 📁 **desafio8: Segunda Práctica Integradora: Práctica de integración sobre tu ecommerce**
 - 📁 **desafio9: Reestructura de nuestro servidor**
 - 📁 **desafio10: Mocking y manejo de errores**
 - 📁 **desafio11: Implementación de logger**
-- 📁 **desafio12: Práctica de integración sobre tu ecommerce**
+- 📁 **desafio12: Tercer Práctica Integradora: Práctica de integración sobre tu ecommerce**
+- 📁 **desafio13: Documentar API**
+- 📁 **desafio14: Módulos de testing para el Proyecto Final**
+- 📁 **desafio15: Cuarta Práctica Integradora: Práctica de integración sobre tu ecommerce**
 - 📁 **Primera Preentrega: Router y Multer**
 - 📁 **Segunda Preentrega: Mongo Avanzado**
 - 📁 **Tercer Preentrega: Reestructurando de nuestro servidor**
+- 📁 **Proyecto Final: Backend de una apliación ecommerce**
 
 ---
 
