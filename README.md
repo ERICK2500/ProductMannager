@@ -38,7 +38,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 - 📁 **Primera Preentrega: Router y Multer**
 - 📁 **Segunda Preentrega: Mongo Avanzado**
 - 📁 **Tercer Preentrega: Reestructurando de nuestro servidor**
-- 📁 **Entrega Final: Pasarelas de pago**
+- 📁 **Proyecto Final: Backend de una apliación ecommerce**
 
 
 ---
