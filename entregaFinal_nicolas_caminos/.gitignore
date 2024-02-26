@@ -1,0 +1,7 @@
+/node_modules
+/test
+package-lock.json
+mock_data.json
+.env
+*.log
+test.js
