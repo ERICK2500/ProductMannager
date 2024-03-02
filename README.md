@@ -55,6 +55,11 @@ A lo largo del proyecto el mismo fue teniendo las siguientes versiones:
 
 <a href="https://sass-lang.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg" alt="sass" width="40" height="40"/> </a> <h2>V2.19.6</h2></p>
 </br>
+<a href="https://nodejs.org/en" target="_blank" rel="noreferrer"> <img src="https://nodejs.org/static/images/logo.svg" alt="nodejs" width="60" height="40"/> </a> <h2>V20.11.1</h2></p>
+</br>
+
+<a href="https://www.mongodb.com/es/atlas" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png" alt="mongoBd Atlas" width="60" height="40"/> </a> <h2>V6.0</h2></p>
+</br>
 
 ---
 
