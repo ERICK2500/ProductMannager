@@ -73,10 +73,7 @@ git clone NicolasCaminos/ProductMannager.git
 ### 2. Configurar el entorno
 
 ```bash
-cd Infinity
-# Install project dependencies and tools
-npm run setup
-# or
+
 npm i
 
 ```
