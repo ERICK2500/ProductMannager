@@ -19,6 +19,7 @@ Ramas de trabajo: El mismo cuenta con dos ramas de trabajo: `main` (donde se alo
 
 ## Folder Structure
 
+A lo largo del proyecto el mismo fue teniendo las siguientes versiones: 
 
 - 📁 **desafio1: ECMAScript y ECMAScript avanzado**
 - 📁 **desafio2: Manejo de archivos**
